@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.Faction
+namespace DesignPatterns
 {
     internal class UnitFactory
     {

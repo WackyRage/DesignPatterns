@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Infantry : Unit
+    internal class Mission
     {
         private string Name;
+        private string Description;
         private int Value;
 
-        public Infantry(string N, int V)
+        public Mission(string N, string D, int V)
         {
             Name = N;
+            Description = D;
             Value = V;
         }
 
         public void SetName(string N)
         {
             Name = N;
+        }
+
+        public void SetDescription(string D)
+        {
+            Description = D;
         }
 
         public void SetValue(int V)
@@ -30,6 +37,11 @@ namespace DesignPatterns
         public string GetName()
         {
             return Name;
+        }
+
+        public string GetDescription()
+        {
+            return Description;
         }
 
         public int GetValue()

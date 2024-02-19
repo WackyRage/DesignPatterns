@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal interface Unit
+    internal interface Publisher
     {
-        void SetName(string Name);
-        void SetValue(int Value);
-        string GetName();
-
-        int GetValue();
-
+        public void Subscribe();
+        public void Unsubscribe();
+        public void NotifySubscriber();
     }
 }

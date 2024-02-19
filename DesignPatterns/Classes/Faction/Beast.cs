@@ -8,7 +8,7 @@ namespace DesignPatterns
 {
     internal class Beast: Unit
     {
-        private String Name;
+        private string Name;
         private int Value;
 
         public Beast(string N, int V)
@@ -17,7 +17,7 @@ namespace DesignPatterns
             Value = V;
         }
 
-        public void SetName(String N)
+        public void SetName(string N)
         {
             Name = N;
         }
@@ -27,7 +27,7 @@ namespace DesignPatterns
             Value = V;
         }
 
-        public String GetName()
+        public string GetName()
         {
             return Name;
         }

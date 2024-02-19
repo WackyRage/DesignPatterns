@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal interface Unit
+    internal interface Subscriber
     {
-        void SetName(string Name);
-        void SetValue(int Value);
-        string GetName();
-
-        int GetValue();
-
+        public void Update();
     }
 }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Infantry : Unit
+    internal class GameType
     {
+        private List<Faction> Factions;
         private string Name;
-        private int Value;
 
-        public Infantry(string N, int V)
+        public GameType(string N) 
         {
             Name = N;
-            Value = V;
+            Factions = new List<Faction>();
         }
 
         public void SetName(string N)
@@ -22,9 +22,9 @@ namespace DesignPatterns
             Name = N;
         }
 
-        public void SetValue(int V)
+        public void AddFaction(Faction Faction)
         {
-            Value = V;
+            Factions.Add(Faction);
         }
 
         public string GetName()
@@ -32,9 +32,9 @@ namespace DesignPatterns
             return Name;
         }
 
-        public int GetValue()
+        public Faction GetFactionById(int Id)
         {
-            return Value;
+            return Factions[Id];
         }
     }
 }

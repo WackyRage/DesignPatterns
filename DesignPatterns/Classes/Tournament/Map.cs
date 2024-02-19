@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Infantry : Unit
+    internal class Map
     {
         private string Name;
-        private int Value;
+        private List<TerrainCoordinates> Terrains;
 
-        public Infantry(string N, int V)
+        public Map(string N)
         {
             Name = N;
-            Value = V;
+            Terrains = new List<TerrainCoordinates>();
         }
 
         public void SetName(string N)
@@ -22,9 +22,9 @@ namespace DesignPatterns
             Name = N;
         }
 
-        public void SetValue(int V)
+        public void AddTerrain(Terrain T, int X, int Y)
         {
-            Value = V;
+            Terrains.Add(new TerrainCoordinates(T, X, Y));
         }
 
         public string GetName()
@@ -32,9 +32,9 @@ namespace DesignPatterns
             return Name;
         }
 
-        public int GetValue()
+        public TerrainCoordinates GetTerrainById(int Id) 
         {
-            return Value;
+            return Terrains[Id];
         }
     }
 }
