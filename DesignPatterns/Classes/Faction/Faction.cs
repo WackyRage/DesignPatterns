@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Class1
+    internal class Faction
     {
     }
 }

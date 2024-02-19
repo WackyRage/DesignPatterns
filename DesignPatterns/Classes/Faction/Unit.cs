@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns
+namespace DesignPatterns.Faction
 {
     internal interface Unit
     {
-        void SetName(String Name);
+        void SetName(string Name);
         void SetValue(int Value);
-        String GetName();
+        string GetName();
 
         int GetValue();
 

@@ -4,25 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns
+namespace DesignPatterns.Faction
 {
     internal class UnitFactory
     {
         public UnitFactory() { }
 
-        public Unit CreateUnit(String Type, String Name, int Value)
+        public Unit CreateUnit(string Type, string Name, int Value)
         {
             Type = Type.Replace(" ", "").ToLower();
             if (Type.Equals("vehicle"))
             {
                 return new Vehicle(Name, Value);
-            } else if (Type.Equals("infantry"))
+            }
+            else if (Type.Equals("infantry"))
             {
                 return new Infantry(Name, Value);
-            } else if (Type.Equals("beast"))
+            }
+            else if (Type.Equals("beast"))
             {
                 return new Beast(Name, Value);
-            } else
+            }
+            else
             {
                 return null;
             }

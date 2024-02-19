@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns
+namespace DesignPatterns.Faction
 {
-    internal class Infantry: Unit
+    internal class Vehicle : Unit
     {
-        private String Name;
+        private string Name;
         private int Value;
 
-        public Infantry(string N, int V)
+        public Vehicle(string N, int V)
         {
             Name = N;
             Value = V;
         }
 
-        public void SetName(String N)
+        public void SetName(string N)
         {
             Name = N;
         }
@@ -27,7 +27,7 @@ namespace DesignPatterns
             Value = V;
         }
 
-        public String GetName()
+        public string GetName()
         {
             return Name;
         }
