@@ -2,3 +2,5 @@
 .vs\
 DesignPatterns\obj\Debug\
 DesignPatterns/obj/Debug/
+
+.fake
