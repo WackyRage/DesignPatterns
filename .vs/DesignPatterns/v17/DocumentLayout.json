@@ -1,12 +1,141 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\",
-  "Documents": [],
+  "WorkspaceRootPath": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\tournamentoverview\\tournamentoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\tournamentoverview\\tournamentoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\tournamentoverview\\tournamentscreen\\tournamentscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\tournamentoverview\\tournamentscreen\\tournamentscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\secundarymissionoverview\\secundarymissionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\secundarymissionoverview\\secundarymissionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\factionoverview\\factionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\factionoverview\\factionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\mapoverview\\mapoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\mapoverview\\mapoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|e:\\github desktop\\repositories\\design patterns\\designpatterns\\designpatterns\\mainmissionoverview\\mainmissionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0F7E2616-BA5A-4EE3-8793-64D2E64547B7}|DesignPatterns\\DesignPatterns.csproj|solutionrelative:designpatterns\\mainmissionoverview\\mainmissionoverview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MainPage.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\MainPage.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MainPage.xaml",
+              "RelativeToolTip": "DesignPatterns\\MainPage.xaml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T04:07:48.855Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TournamentOverview.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\TournamentOverview\\TournamentOverview.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\TournamentOverview\\TournamentOverview.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\TournamentOverview\\TournamentOverview.xaml",
+              "RelativeToolTip": "DesignPatterns\\TournamentOverview\\TournamentOverview.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T04:27:03.534Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TournamentScreen.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\TournamentOverview\\TournamentScreen\\TournamentScreen.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\TournamentOverview\\TournamentScreen\\TournamentScreen.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\TournamentOverview\\TournamentScreen\\TournamentScreen.xaml",
+              "RelativeToolTip": "DesignPatterns\\TournamentOverview\\TournamentScreen\\TournamentScreen.xaml",
+              "ViewState": "AQIAADYAAAAAAAAAAADwv0UAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T06:26:36.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainMissionOverview.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MainMissionOverview\\MainMissionOverview.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\MainMissionOverview\\MainMissionOverview.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MainMissionOverview\\MainMissionOverview.xaml",
+              "RelativeToolTip": "DesignPatterns\\MainMissionOverview\\MainMissionOverview.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T06:21:31.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MapOverview.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MapOverview\\MapOverview.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\MapOverview\\MapOverview.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\MapOverview\\MapOverview.xaml",
+              "RelativeToolTip": "DesignPatterns\\MapOverview\\MapOverview.xaml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T06:20:24.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FactionOverview.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\FactionOverview\\FactionOverview.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\FactionOverview\\FactionOverview.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\FactionOverview\\FactionOverview.xaml",
+              "RelativeToolTip": "DesignPatterns\\FactionOverview\\FactionOverview.xaml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T06:26:21.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SecundaryMissionOverview.xaml",
+              "DocumentMoniker": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\SecundaryMissionOverview\\SecundaryMissionOverview.xaml",
+              "RelativeDocumentMoniker": "DesignPatterns\\SecundaryMissionOverview\\SecundaryMissionOverview.xaml",
+              "ToolTip": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\SecundaryMissionOverview\\SecundaryMissionOverview.xaml",
+              "RelativeToolTip": "DesignPatterns\\SecundaryMissionOverview\\SecundaryMissionOverview.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-27T06:26:29.656Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

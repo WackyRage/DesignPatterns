@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj": {}
+    "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj": {}
   },
   "projects": {
-    "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj": {
+    "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
+        "projectUniqueName": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
         "projectName": "DesignPatterns",
-        "projectPath": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
-        "packagesPath": "C:\\Users\\frank\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\obj\\",
+        "projectPath": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
+        "packagesPath": "C:\\Users\\VisualTunic488\\.nuget\\packages\\",
+        "outputPath": "E:\\Github Desktop\\Repositories\\Design Patterns\\DesignPatterns\\DesignPatterns\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\frank\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\VisualTunic488\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
