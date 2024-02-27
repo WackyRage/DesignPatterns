@@ -8,28 +8,17 @@ namespace DesignPatterns
 {
     internal class Terrain
     {
-        private string Name;
-        private List<string> Rules;
+        public string Name { get; set; }
+        public List<string> Rules { get; set; } = new();
 
-        public Terrain(string N)
+        public Terrain(string Name)
         {
-            Name = N;
-            Rules = new List<string>();
-        }
-
-        public void SetName(string N)
-        {
-            Name = N;
+            this.Name = Name;
         }
 
         public void AddRule(string R)
         {
             Rules.Add(R);
-        }
-
-        public string GetName()
-        {
-            return Name;
         }
 
         public string GetRuleById(int Id)

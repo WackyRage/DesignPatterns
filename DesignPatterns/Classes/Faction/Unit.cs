@@ -8,11 +8,8 @@ namespace DesignPatterns
 {
     internal interface Unit
     {
-        void SetName(string Name);
-        void SetValue(int Value);
-        string GetName();
-
-        int GetValue();
+        public string Name { get; set; }
+        public int Value { get; set; }
 
     }
 }

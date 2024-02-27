@@ -3,34 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage.Pickers.Provider;
 
 namespace DesignPatterns
 {
     internal class Faction
     {
-        private string Name;
-        private List<Unit> Units;
+        public string Name {  get; set; }
+        public List<Unit> Units { get; set; } = new();
 
-        public Faction(string N)
+        public Faction(string Name)
         {
-            Name = N;
-            Units = new List<Unit>();
-        }
-
-        public void SetName(string N)
-        {
-            Name = N;
+            this.Name = Name;
         }
 
         public void AddUnit(Unit Unit)
         {
             Units.Add(Unit);
-        }
-
-        public string GetName()
-        {
-            return Name;
         }
 
         public Unit GetUnitById(int Id)

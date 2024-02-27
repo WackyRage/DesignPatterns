@@ -8,33 +8,13 @@ namespace DesignPatterns
 {
     internal class Infantry : Unit
     {
-        private string Name;
-        private int Value;
+        public string Name {  get; set; }
+        public int Value { get; set; }
 
-        public Infantry(string N, int V)
+        public Infantry(string Name, int Value)
         {
-            Name = N;
-            Value = V;
-        }
-
-        public void SetName(string N)
-        {
-            Name = N;
-        }
-
-        public void SetValue(int V)
-        {
-            Value = V;
-        }
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public int GetValue()
-        {
-            return Value;
+            this.Name = Name;
+            this.Value = Value;
         }
     }
 }

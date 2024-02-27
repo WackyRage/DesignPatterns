@@ -8,31 +8,17 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        private List<Mission> PrimaryMissions;
-        private List<Mission> SecondaryMissions;
-        private Map Map;
-        private GameType GameType;
-        private List<Log> Logs;
-        private List<ArmyList> Armies;
+        public List<Mission> PrimaryMissions { get; set; }
+        public List<Mission> SecondaryMissions { get; set; } = new();
+        public Map Map { get; set; }
+        public GameType GameType { get; set; }
+        public List<Log> Logs { get; set; } = new();
+        public List<ArmyList> Armies { get; set; } = new();
 
-        public Tournament(Map M, GameType G)
+        public Tournament(Map Map, GameType GameType)
         {
-            Map = M;
-            GameType = G;
-            PrimaryMissions = new List<Mission>();
-            SecondaryMissions = new List<Mission>();
-            Logs = new List<Log>();
-            Armies = new List<ArmyList>();
-        }
-
-        public void SetMap(Map M)
-        {
-            Map = M;
-        }
-
-        public void SetGameType(GameType G)
-        {
-            GameType = G;
+            this.Map = Map;
+            this.GameType = GameType;
         }
 
         public void AddPrimaryMission(Mission M)
@@ -53,16 +39,6 @@ namespace DesignPatterns
         public void AddArmy(ArmyList A)
         {
             Armies.Add(A);
-        }
-
-        public Map GetMap()
-        {
-            return Map;
-        }
-
-        public GameType GetGameType()
-        {
-            return GameType;
         }
 
         public Mission GetPrimaryMissionById(int Id)

@@ -8,40 +8,19 @@ namespace DesignPatterns
 {
     internal class ArmyList
     {
-        private string ArmyName;
-        private string PlayerName;
-        private List<Unit> Units;
+        public string ArmyName { get; set; }
+        public string PlayerName { get; set; }
+        public List<Unit> Units { get; set; } = new();
 
-        public ArmyList(string A, string P)
+        public ArmyList(string ArmyName, string PlayerName)
         {
-            ArmyName = A;
-            PlayerName = P;
-            Units = new List<Unit>();
-        }
-
-        public void SetArmyName(string A)
-        {
-            ArmyName = A;
-        }
-
-        public void SetPlayerName(string P)
-        {
-            PlayerName = P;
+            this.ArmyName = ArmyName;
+            this.PlayerName = PlayerName;
         }
 
         public void AddUnit(Unit Unit)
         {
             Units.Add(Unit);
-        }
-
-        public string GetArmyName()
-        {
-            return ArmyName;
-        }
-
-        public string GetPlayerName()
-        {
-            return PlayerName;
         }
 
         public Unit GetUnitById(int Id)

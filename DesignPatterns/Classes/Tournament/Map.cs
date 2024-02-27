@@ -8,28 +8,17 @@ namespace DesignPatterns
 {
     internal class Map
     {
-        private string Name;
-        private List<TerrainCoordinates> Terrains;
+        public string Name { get; set; }
+        public List<TerrainCoordinates> Terrains { get; set; } = new();
 
-        public Map(string N)
+        public Map(string Name)
         {
-            Name = N;
-            Terrains = new List<TerrainCoordinates>();
-        }
-
-        public void SetName(string N)
-        {
-            Name = N;
+            this.Name = Name;
         }
 
         public void AddTerrain(Terrain T, int X, int Y)
         {
             Terrains.Add(new TerrainCoordinates(T, X, Y));
-        }
-
-        public string GetName()
-        {
-            return Name;
         }
 
         public TerrainCoordinates GetTerrainById(int Id) 

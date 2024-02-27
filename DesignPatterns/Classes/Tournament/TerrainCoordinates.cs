@@ -8,20 +8,15 @@ namespace DesignPatterns
 {
     internal class TerrainCoordinates
     {
-        private Terrain Terrain;
-        private int XCoordinate;
-        private int YCoordinate;
+        public Terrain Terrain { get; set; }
+        public int XCoordinate { get; set; }
+        public int YCoordinate {  get; set; }
 
-        public TerrainCoordinates(Terrain T, int X, int Y)
+        public TerrainCoordinates(Terrain Terrain, int XCoordinate, int YCoordinate)
         {
-            Terrain = T;
-            XCoordinate = X;
-            YCoordinate = Y;
-        }
-
-        public void SetTerrain(Terrain T)
-        {
-            Terrain = T;
+            this.Terrain = Terrain;
+            this.XCoordinate = XCoordinate;
+            this.YCoordinate = YCoordinate;
         }
 
         public void SetCoordinates(int X, int Y)
@@ -33,11 +28,6 @@ namespace DesignPatterns
         public List<int> GetCoordinates()
         {
             return new List<int> { XCoordinate, YCoordinate };
-        }
-
-        public Terrain GetTerrain()
-        {
-            return Terrain;
         }
     }
 }

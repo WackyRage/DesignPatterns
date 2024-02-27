@@ -8,25 +8,15 @@ namespace DesignPatterns
 {
     internal class Log
     {
-        private string Message;
-        private DateTime Date;
-        private bool Resolved;
+        public string Message { get; set; }
+        public DateTime Date {  get; set; }
+        public bool Resolved {  get; set; }
 
-        public Log(string M, DateTime D, bool R)
+        public Log(string Message, DateTime Date, bool Resolved)
         {
-            Message = M;
-            Date = D;
-            Resolved = R;
-        }
-
-        public void SetMessage(string M)
-        {
-            Message = M;
-        }
-
-        public void SetDate(DateTime D)
-        {
-            Date = D;
+            this.Message = Message;
+            this.Date = Date;
+            this.Resolved = Resolved;
         }
 
         public void ChangeResolved()
@@ -39,21 +29,5 @@ namespace DesignPatterns
                 Resolved = true;
             }
         }
-
-        public string GetMessage()
-        {
-            return Message;
-        }
-
-        public DateTime GetDate() 
-        { 
-            return Date; 
-        }
-
-        public bool GetResolved()
-        {
-            return Resolved;
-        }
-
     }
 }
