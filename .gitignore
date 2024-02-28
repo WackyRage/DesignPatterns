@@ -1,7 +1,7 @@
 .vs/
 .vs\
-DesignPatterns\obj\Debug\
-DesignPatterns/obj/Debug/
+DesignPatterns\obj\
+DesignPatterns/obj/
 DesignPatterns/bin/Debug/
 DesignPatterns\bin\Debug\
 
