@@ -36,6 +36,21 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+DesignPatterns/[Dd]ebug/
+DesignPatterns/[Dd]ebugPublic/
+DesignPatterns/[Rr]elease/
+DesignPatterns/[Rr]eleases/
+DesignPatterns/x64/
+DesignPatterns/x86/
+DesignPatterns/[Ww][Ii][Nn]32/
+DesignPatterns/[Aa][Rr][Mm]/
+DesignPatterns/[Aa][Rr][Mm]64/
+DesignPatterns/bld/
+DesignPatterns/[Bb]in/
+DesignPatterns/[Oo]bj/
+DesignPatterns/[Ll]og/
+DesignPatterns/[Ll]ogs/
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
