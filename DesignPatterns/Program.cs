@@ -13,12 +13,11 @@ namespace DesignPatterns
         {
             Unit U1 = new Beast("Beast1", 1);
 
-            JsonSerializerOptions O = new JsonSerializerOptions { IncludeFields = true };
-            string jsonString = JsonSerializer.Serialize<Unit>(U1, O);
+            string jsonString = JSONObject.ToJSON(U1);
             Console.WriteLine(jsonString);
 
-            Beast B1 = JsonSerializer.Deserialize<Beast>(jsonString);
-            Console.WriteLine(B1.ToString());
+            Unit U2 = (Unit)JSONObject.JSONToObject(jsonString);
+            Console.WriteLine(U2.ToString());
         }
     }
 }
