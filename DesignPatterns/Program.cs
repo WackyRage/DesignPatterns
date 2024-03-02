@@ -12,12 +12,21 @@ namespace DesignPatterns
         public static void Main()
         {
             Unit U1 = new Beast("Beast1", 1);
+            Unit U2 = new Infantry("Infantry1", 2);
+            Unit U3 = new Vehicle("Vehicle1", 3);
 
-            string jsonString = JSONObject.ToJSON(U1);
+            List<Unit> LU = new();
+            LU.Add(U1); 
+            LU.Add(U2);
+            LU.Add(U3);
+
+            string jsonString = JSONObject.ListToJSON<Unit>(LU);
             Console.WriteLine(jsonString);
 
+            /*
             Unit U2 = (Unit)JSONObject.JSONToObject(jsonString);
             Console.WriteLine(U2.ToString());
+            */
         }
     }
 }
