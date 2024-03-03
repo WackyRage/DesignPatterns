@@ -15,24 +15,16 @@ namespace DesignPatterns
             Unit U2 = new Infantry("Infantry1", 2);
             Unit U3 = new Vehicle("Vehicle1", 3);
 
-            List<Unit> LU = new();
-            LU.Add(U1); 
-            LU.Add(U2);
-            LU.Add(U3);
+            ArmyList AL = new("Army1", "Player1");
+            AL.AddUnit(U1);
+            AL.AddUnit(U2);
+            AL.AddUnit(U3);
 
-            string jsonString = JSONObject.ListToJSON<Unit>(LU);
+            string jsonString = AL.ToJSON();
             Console.WriteLine(jsonString);
 
-            List<Unit> LU2 = JSONObject.JSONToList<Unit>(jsonString);
-            foreach (Unit u in LU2)
-            {
-                Console.WriteLine(u.ToString());
-            }
-
-            /*
-            Unit U2 = (Unit)JSONObject.JSONToObject(jsonString);
-            Console.WriteLine(U2.ToString());
-            */
+            ArmyList AL2 = ArmyList.FromJSON(jsonString);
+            Console.WriteLine(AL2.ToString());
         }
     }
 }

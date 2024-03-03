@@ -25,5 +25,30 @@ namespace DesignPatterns
         {
             return Units[Id];
         }
+
+        public string ToJSON()
+        {
+            string JN = JSONObject.ObjectToJSON(this.Name);
+            string JU = JSONObject.ListToJSON(this.Units);
+
+            List<string> list = new() { JN, JU };
+
+            string returnString = JSONObject.ListToJSON(list);
+            return returnString;
+        }
+
+        public static Faction FromJSON(string jsonString)
+        {
+            List<string> list = JSONObject.JSONToList<string>(jsonString);
+            string Name = (string)JSONObject.JSONToObject(list[0]);
+            Faction Faction = new(Name);
+
+            List<Unit> Units = JSONObject.JSONToList<Unit>(list[1]);
+            foreach (Unit Unit in Units)
+            {
+                Faction.AddUnit(Unit);
+            }
+            return Faction;
+        }
     }
 }
