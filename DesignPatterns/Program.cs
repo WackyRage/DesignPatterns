@@ -23,6 +23,12 @@ namespace DesignPatterns
             string jsonString = JSONObject.ListToJSON<Unit>(LU);
             Console.WriteLine(jsonString);
 
+            List<Unit> LU2 = JSONObject.JSONToList<Unit>(jsonString);
+            foreach (Unit u in LU2)
+            {
+                Console.WriteLine(u.ToString());
+            }
+
             /*
             Unit U2 = (Unit)JSONObject.JSONToObject(jsonString);
             Console.WriteLine(U2.ToString());

@@ -61,9 +61,19 @@ namespace DesignPatterns
             return obj;
         }
 
-        public static object JSONToList(string jsonString)
+        public static List<T> JSONToList<T>(string jsonString)
         {
-            return null;
+            JSONObject JO = (JSONObject)JsonSerializer.Deserialize(jsonString, typeof(JSONObject));
+            JsonElement JE = (JsonElement)JO.Object;
+            List<JSONObject> LJO = (List<JSONObject>)JsonSerializer.Deserialize(JE.GetRawText(), typeof(List<JSONObject>));
+            List<T> returnList = (List<T>)Activator.CreateInstance(Type.GetType(JO.ObjectType));
+            foreach (JSONObject JObject in LJO)
+            {
+                JsonElement JE2 = (JsonElement)JObject.Object;
+                T temp = (T)JsonSerializer.Deserialize(JE2.GetRawText(), Type.GetType(JObject.ObjectType));
+                returnList.Add(temp);
+            }
+            return returnList;
         }
     }
 }
