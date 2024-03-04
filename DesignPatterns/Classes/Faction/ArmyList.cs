@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +11,20 @@ namespace DesignPatterns
     {
         public string ArmyName { get; set; }
         public string PlayerName { get; set; }
-        public List<Unit> Units { get; set; } = new();
-
+        public List<Unit> Units { get; set; }
+        
         public ArmyList(string ArmyName, string PlayerName)
         {
             this.ArmyName = ArmyName;
             this.PlayerName = PlayerName;
+            Units = new();
+        }
+
+        public ArmyList(string ArmyName, string PlayerName, List<Unit> Units)
+        {
+            this.ArmyName = ArmyName;
+            this.PlayerName = PlayerName;
+            this.Units = Units;
         }
 
         public void AddUnit(Unit Unit)
@@ -30,11 +39,9 @@ namespace DesignPatterns
 
         public string ToJSON()
         {
-            string JAN = JSONObject.ObjectToJSON(this.ArmyName);
-            string JPN = JSONObject.ObjectToJSON(this.PlayerName);
             string JU = JSONObject.ListToJSON(this.Units);
 
-            List<string> list = new() { JAN, JPN, JU };
+            List<string> list = new() { this.ArmyName, this.PlayerName, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -43,15 +50,11 @@ namespace DesignPatterns
         public static ArmyList FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string ArmyName = (string)JSONObject.JSONToObject(list[0]);
-            string PlayerName = (string)JSONObject.JSONToObject(list[1]);
-            ArmyList ArmyList = new(ArmyName, PlayerName);
-
+            string ArmyName = list[0];
+            string PlayerName = list[1];
             List<Unit> Units = JSONObject.JSONToList<Unit>(list[2]);
-            foreach (Unit Unit in Units)
-            {
-                ArmyList.AddUnit(Unit);
-            }
+            ArmyList ArmyList = new(ArmyName, PlayerName, Units);
+
             return ArmyList;
         }
 

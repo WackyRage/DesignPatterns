@@ -14,17 +14,18 @@ namespace DesignPatterns
             Unit U1 = new Beast("Beast1", 1);
             Unit U2 = new Infantry("Infantry1", 2);
             Unit U3 = new Vehicle("Vehicle1", 3);
+            List<Unit> UL = new () { U1, U2, U3 };
+            Faction F1 = new("Faction1", UL);
+            Faction F2 = new("Faction2", UL);
+            Faction F3 = new("Faction3", UL);
+            List<Faction> FL = new() { F1, F2, F3 };
+            GameType GT = new("GameType1", FL);
 
-            ArmyList AL = new("Army1", "Player1");
-            AL.AddUnit(U1);
-            AL.AddUnit(U2);
-            AL.AddUnit(U3);
-
-            string jsonString = AL.ToJSON();
+            string jsonString = GT.ToJSON();
             Console.WriteLine(jsonString);
 
-            ArmyList AL2 = ArmyList.FromJSON(jsonString);
-            Console.WriteLine(AL2.ToString());
+            GameType GT2 = GameType.FromJSON(jsonString);
+            Console.WriteLine(GT2.Factions[0].ToString());
         }
     }
 }

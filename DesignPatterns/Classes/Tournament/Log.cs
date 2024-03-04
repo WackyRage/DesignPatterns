@@ -29,5 +29,25 @@ namespace DesignPatterns
                 Resolved = true;
             }
         }
+
+        public string ToJSON()
+        {
+            string Date = JSONObject.ObjectToJSON(this.Date);
+            string Resolved = JSONObject.ObjectToJSON(this.Resolved);
+            List<string> list = new() { Message, Date, Resolved };
+
+            string jsonString = JSONObject.ListToJSON(list);
+            return jsonString; 
+        }
+
+        public static Log FromJSON(string jsonString)
+        {
+            List<string> list = JSONObject.JSONToList<string>(jsonString);
+            string Message = list[0];
+            DateTime Date = (DateTime)JSONObject.JSONToObject(list[1]);
+            bool Resolved = (bool)JSONObject.JSONToObject(list[2]);
+            Log Log = new(Message, Date, Resolved);
+            return Log;
+        }
     }
 }
