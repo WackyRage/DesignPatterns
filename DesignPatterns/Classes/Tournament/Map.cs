@@ -56,5 +56,10 @@ namespace DesignPatterns
             Map Map = new(Name, Terrains);
             return Map;
         }
+
+        public override string ToString()
+        {
+            return this.Name + ", " + this.Terrains.Count;
+        }
     }
 }
