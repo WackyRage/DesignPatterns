@@ -16,5 +16,15 @@ namespace DesignPatterns
             this.Name = Name;
             this.Value = Value;
         }
+        
+        public string ToJSON()
+        {
+            return JSONObject.ObjectToJSON(this);
+        }
+
+        public override string ToString()
+        {
+            return "(" + Name + "," + Value.ToString() + ")";
+        }
     }
 }
