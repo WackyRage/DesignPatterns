@@ -60,5 +60,37 @@ namespace DesignPatterns
             }
             return returnList;
         }
+
+        public static void WriteJSONToFile(List<string> jsonStrings, string FileName)
+        {
+            var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
+            while (directory != null && !directory.GetFiles("*.sln").Any())
+            {
+                directory = directory.Parent;
+            }
+            string path = directory.FullName;
+            string jsonString = JSONObject.ListToJSON(jsonStrings);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(path, "SaveData", FileName)))
+            {
+                outputFile.Write(jsonString);
+            }
+        }
+
+        public static List<string> ReadJSONFile(string FileName)
+        {
+            var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
+            while (directory != null && !directory.GetFiles("*.sln").Any())
+            {
+                directory = directory.Parent;
+            }
+            string path = directory.FullName;
+            string jsonString = "";
+            using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
+            {
+                jsonString = sr.ReadToEnd();
+            }
+            List<string> list = JSONObject.JSONToList<string>(jsonString);
+            return list;
+        }
     }
 }

@@ -29,30 +29,54 @@ namespace DesignPatterns
             List<Faction> LF = new() { F1, F2, F3 };
             GameType GameType = new("GameType1", LF);
 
-            ArmyList AL1 = new("ArmyList1", "Player1", LU);
-            ArmyList AL2 = new("ArmyList2", "Player2", LU);
-            ArmyList AL3 = new("ArmyList3", "Player3", LU);
-            List<ArmyList> Armies = new() { AL1, AL2, AL3 };
+            List<string> Rules2 = new() { "Rule2", "Rule3", "Rule4" };
+            Terrain T2 = new("Terrain2", Rules);
+            TerrainCoordinates TC4 = new(T2, 4, 4);
+            TerrainCoordinates TC5 = new(T2, 5, 5);
+            TerrainCoordinates TC6 = new(T2, 6, 6);
+            List<TerrainCoordinates> LTC2 = new() { TC4, TC5, TC6 };
+            Map Map2 = new("Map2", LTC2);
 
-            Mission M1 = new("Mision1", "MissionDescription1", 1);
-            Mission M2 = new("Mision2", "MissionDescription2", 2);
-            Mission M3 = new("Mision3", "MissionDescription3", 3);
+            Unit U4 = new Beast("Beast2", 2);
+            Unit U5 = new Infantry("Infantry2", 2);
+            Unit U6 = new Vehicle("Vehicle2", 2);
+            List<Unit> LU2 = new() { U4, U5, U6 };
+            Faction F4 = new("Faction4", LU2);
+            Faction F5 = new("Faction5", LU2);
+            Faction F6 = new("Faction6", LU2);
+            List<Faction> LF2 = new() { F4, F5, F6 };
+            GameType GameType2 = new("GameType2", LF2);
 
-            List<Mission> Missions = new() { M1, M2, M3 };
+            ArmyList army = new("ArmyList1", "Player1", LU);
+            ArmyList army2 = new("ArmyList1", "Player1", LU);
 
-            Log L1 = new("Log1", DateTime.Now, true);
-            Log L2 = new("Log2", DateTime.Now, false);
-            Log L3 = new("Log3", DateTime.Now, true);
-            List<Log> Logs = new() { L1, L2, L3 };
-
-            Tournament Tournament = new(Map, GameType, Missions, Missions, Logs, Armies);
-
-            string jsonString = Tournament.ToJSON();
+            string jsonString1 = U1.ToJSON();
+            string jsonString2 = U2.ToJSON();
+            string jsonString3 = U3.ToJSON();
+            string jsonString4 = U4.ToJSON();
+            string jsonString5 = U5.ToJSON();
+            string jsonString6 = U6.ToJSON();
+            List<String> list = new() { jsonString1, jsonString2, jsonString3, jsonString4, jsonString5, jsonString6 };
+            /*
             Console.WriteLine(jsonString);
 
             Tournament Tournament2 = Tournament.FromJSON(jsonString);
             Console.WriteLine(Tournament2.ToString());
+            */
 
+            JSONObject.WriteJSONToFile(list, "Units.json");
+            List<string> jsonList = JSONObject.ReadJSONFile("Units.json");
+            List<Unit> list2 = new();
+            foreach (string item in jsonList)
+            {
+                Unit temp = Unit.FromJSON(item);
+                list2.Add(temp);
+            }
+
+            foreach (Unit temp in list2)
+            {
+                Console.WriteLine(temp.ToString());
+            }
 
         }
     }
