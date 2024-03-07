@@ -13,22 +13,22 @@ namespace DesignPatterns
         public Unit CreateUnit(string Type, string Name, int Value)
         {
             Type = Type.Replace(" ", "").ToLower();
-            if (Type.Equals("vehicle"))
+
+            switch (Type)
             {
-                return new Vehicle(Name, Value);
+                case "vehicle":
+                    return new Vehicle(Name, Value);
+
+                case "infantry":
+                    return new Infantry(Name, Value);
+
+                case "beast":
+                    return new Beast(Name, Value);
+
+                default:
+                    return null;
             }
-            else if (Type.Equals("infantry"))
-            {
-                return new Infantry(Name, Value);
-            }
-            else if (Type.Equals("beast"))
-            {
-                return new Beast(Name, Value);
-            }
-            else
-            {
-                return null;
-            }
+            
         }
     }
 }
