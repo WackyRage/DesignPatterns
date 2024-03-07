@@ -11,11 +11,13 @@ namespace DesignPatterns
     {
         private string Name;
         private List<Unit> Units;
+        private UnitFactory unitFactory;
 
         public Faction(string N)
         {
             Name = N;
             Units = new List<Unit>();
+            this.unitFactory = new UnitFactory();
         }
 
         public void SetName(string N)
@@ -23,9 +25,16 @@ namespace DesignPatterns
             Name = N;
         }
 
-        public void AddUnit(Unit Unit)
+        public void AddUnit(string type, string name, int value)
         {
-            Units.Add(Unit);
+            Unit unit = unitFactory.CreateUnit(type, name, value);
+            if(unit != null) 
+            { 
+                this.Units.Add(unit); 
+            } else
+            {
+                throw new Exception(); // needs alternative method
+            }
         }
 
         public string GetName()

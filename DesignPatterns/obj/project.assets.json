@@ -32931,24 +32931,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\frank\\.nuget\\packages\\": {},
+    "C:\\Users\\WackyMachine\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
+      "projectUniqueName": "C:\\Users\\WackyMachine\\Documents\\GitHub\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
       "projectName": "DesignPatterns",
-      "projectPath": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
-      "packagesPath": "C:\\Users\\frank\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\frank\\source\\repos\\DesignPatterns\\DesignPatterns\\obj\\",
+      "projectPath": "C:\\Users\\WackyMachine\\Documents\\GitHub\\DesignPatterns\\DesignPatterns\\DesignPatterns.csproj",
+      "packagesPath": "C:\\Users\\WackyMachine\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\WackyMachine\\Documents\\GitHub\\DesignPatterns\\DesignPatterns\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\frank\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\WackyMachine\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
