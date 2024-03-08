@@ -10,6 +10,7 @@ namespace DesignPatterns
     {
         public string Name {  get; set; }
         public List<Unit> Units { get; set; }
+        private UnitFactory unitFactory = new UnitFactory();
 
         public Faction(string Name)
         {
