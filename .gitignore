@@ -1,0 +1,8 @@
+.vs/
+.vs\
+DesignPatterns\obj\Debug\
+DesignPatterns/obj/Debug/
+DesignPatterns/bin/Debug/
+DesignPatterns\bin\Debug\
+
+.fake
