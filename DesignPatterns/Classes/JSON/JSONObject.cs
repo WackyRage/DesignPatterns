@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Diagnostics;
 
 namespace DesignPatterns
 {
@@ -80,13 +81,16 @@ namespace DesignPatterns
         {
             /*
             var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
+            Debug.WriteLine(directory.FullName);
             while (directory != null && !directory.GetFiles("*.sln").Any())
             {
                 directory = directory.Parent;
             }
+            string path = directory.FullName;
             */
 
             string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+                          //@"D:\Users\frank\source\repos\DesignPatterns";
             string jsonString = "";
             using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
             {
