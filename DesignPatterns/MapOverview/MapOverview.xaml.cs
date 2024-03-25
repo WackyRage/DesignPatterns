@@ -1,10 +1,17 @@
-﻿namespace DesignPatterns.MapOverview
+﻿using System.Collections;
+
+namespace DesignPatterns.MapOverview
 {
     public partial class MapOverview : ContentPage
     {
-        public MapOverview()    
+        ArrayList Maps = new ArrayList();
+
+        public MapOverview(ArrayList Maps)    
         {
+            this.Maps = Maps;
             InitializeComponent();
+
+            collectionViewMaps.ItemsSource = this.Maps;
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)

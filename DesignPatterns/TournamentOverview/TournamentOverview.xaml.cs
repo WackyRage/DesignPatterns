@@ -10,6 +10,8 @@ namespace DesignPatterns.TournamentOverview
         {
             this.Tournaments = Tournaments;
             InitializeComponent();
+
+            collectionViewTournaments.ItemsSource = this.Tournaments;
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)

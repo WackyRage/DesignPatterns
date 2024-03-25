@@ -31,12 +31,12 @@ namespace DesignPatterns
         }
         public void Button_Clicked_Map(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MapOverview.MapOverview());
+            Navigation.PushAsync(new MapOverview.MapOverview(Maps));
         }
 
         public void Button_Clicked_Main(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview());
+            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview(PrimaryMissions));
         }
 
         public void Button_Clicked_Secundary(object sender, EventArgs e)

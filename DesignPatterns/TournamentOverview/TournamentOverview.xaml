@@ -35,8 +35,8 @@
                 Grid.Column="2"
                 Clicked="Button_Clicked_NewTournament"
                 BackgroundColor="OrangeRed"/>
-        
-        <CollectionView Grid.Row="3" Grid.Column="1" Margin="20">
+
+        <CollectionView x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20">
             <CollectionView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Tournament One</x:String>
