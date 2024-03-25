@@ -1,10 +1,14 @@
-﻿namespace DesignPatterns.TournamentOverview
+﻿using System.Collections;
+
+namespace DesignPatterns.TournamentOverview
 {
     public partial class TournamentOverview : ContentPage
     {
+        ArrayList Tournaments = new ArrayList();
 
-        public TournamentOverview()
+        public TournamentOverview(ArrayList Tournaments)
         {
+            this.Tournaments = Tournaments;
             InitializeComponent();
         }
 
