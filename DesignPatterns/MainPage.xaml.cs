@@ -41,7 +41,7 @@ namespace DesignPatterns
 
         public void Button_Clicked_Secundary(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview());
+            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview(SecondaryMissions));
         }
 
         public void refreshJsons() 
