@@ -9,39 +9,39 @@ namespace DesignPatterns
 {
     internal class ArmyList
     {
-        private string ArmyName { get; set; }
-        private string PlayerName { get; set; }
-        private List<UnitInterface> Units { get; set; }
+        private string armyName { get; set; }
+        private string playerName { get; set; }
+        private List<UnitInterface> units { get; set; }
         
-        public ArmyList(string ArmyName, string PlayerName)
+        public ArmyList(string armyName, string playerName)
         {
-            this.ArmyName = ArmyName;
-            this.PlayerName = PlayerName;
-            Units = new();
+            this.armyName = armyName;
+            this.playerName = playerName;
+            units = new();
         }
 
-        public ArmyList(string ArmyName, string PlayerName, List<UnitInterface> Units)
+        public ArmyList(string armyName, string playerName, List<UnitInterface> units)
         {
-            this.ArmyName = ArmyName;
-            this.PlayerName = PlayerName;
-            this.Units = Units;
+            this.armyName = armyName;
+            this.playerName = playerName;
+            this.units = units;
         }
 
-        public void AddUnit(UnitInterface Unit)
+        public void addUnit(UnitInterface unit)
         {
-            Units.Add(Unit);
+            units.Add(unit);
         }
 
-        public UnitInterface GetUnitById(int Id)
+        public UnitInterface getUnitById(int id)
         {
-            return Units[Id];
+            return units[id];
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.Units);
+            string JU = JSONObject.ListToJSON(this.units);
 
-            List<string> list = new() { this.ArmyName, this.PlayerName, JU };
+            List<string> list = new() { this.armyName, this.playerName, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -50,17 +50,17 @@ namespace DesignPatterns
         public static ArmyList FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string ArmyName = list[0];
-            string PlayerName = list[1];
-            List<UnitInterface> Units = JSONObject.JSONToList<UnitInterface>(list[2]);
-            ArmyList ArmyList = new(ArmyName, PlayerName, Units);
+            string armyName = list[0];
+            string playerName = list[1];
+            List<UnitInterface> units = JSONObject.JSONToList<UnitInterface>(list[2]);
+            ArmyList armyList = new(armyName, playerName, units);
 
-            return ArmyList;
+            return armyList;
         }
 
         public override string ToString()
         {
-            return ArmyName + ", " + PlayerName + ", " + Units.Count;
+            return armyName + ", " + playerName + ", " + units.Count;
         }
     }
 }

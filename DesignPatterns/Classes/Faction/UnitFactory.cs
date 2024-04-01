@@ -10,19 +10,19 @@ namespace DesignPatterns
     {
         public UnitFactory() { }
 
-        public UnitInterface CreateUnit(string Type, string Name, int Value)
+        public UnitInterface CreateUnit(string type, string name, int value)
         {
-            Type = Type.Replace(" ", "").ToLower();
-            switch (Type)
+            type = type.Replace(" ", "").ToLower();
+            switch (type)
             {
                 case "vehicle":
-                    return new Vehicle(Name, Value);
+                    return new Vehicle(name, value);
 
                 case "infantry":
-                    return new Infantry(Name, Value);
+                    return new Infantry(name, value);
 
                 case "beast":
-                    return new Beast(Name, Value);
+                    return new Beast(name, value);
 
                 default:
                     return null;

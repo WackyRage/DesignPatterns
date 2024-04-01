@@ -8,37 +8,37 @@ namespace DesignPatterns
 {
     internal class Faction
     {
-        private string Name {  get; set; }
-        private List<UnitInterface> Units { get; set; }
+        private string name {  get; set; }
+        private List<UnitInterface> units { get; set; }
         private UnitFactory unitFactory = new UnitFactory();
 
-        public Faction(string Name)
+        public Faction(string name)
         {
-            this.Name = Name;
-            Units = new();
+            this.name = name;
+            units = new();
         }
 
-        public Faction(string Name, List<UnitInterface> Units)
+        public Faction(string name, List<UnitInterface> units)
         {
-            this.Name = Name;
-            this.Units = Units;
+            this.name = name;
+            this.units = units;
         }
 
-        public void AddUnit(UnitInterface Unit)
+        public void addUnit(UnitInterface unit)
         {
-            Units.Add(Unit);
+            units.Add(unit);
         }
 
-        public UnitInterface GetUnitById(int Id)
+        public UnitInterface getUnitById(int id)
         {
-            return Units[Id];
+            return units[id];
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.Units);
+            string JU = JSONObject.ListToJSON(this.units);
 
-            List<string> list = new() { this.Name, JU };
+            List<string> list = new() { this.name, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -47,16 +47,16 @@ namespace DesignPatterns
         public static Faction FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            List<UnitInterface> Units = JSONObject.JSONToList<UnitInterface>(list[1]);
-            Faction Faction = new(Name, Units);
+            string name = list[0];
+            List<UnitInterface> units = JSONObject.JSONToList<UnitInterface>(list[1]);
+            Faction Faction = new(name, units);
 
             return Faction;
         }
 
         public override string ToString()
         {
-            return Name + ", " + Units.Count;
+            return name + ", " + units.Count;
         }
     }
 }
