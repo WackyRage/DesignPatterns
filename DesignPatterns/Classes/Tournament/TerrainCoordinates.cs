@@ -9,9 +9,9 @@ namespace DesignPatterns
 {
     internal class TerrainCoordinates
     {
-        public Terrain Terrain { get; set; }
-        public int XCoordinate { get; set; }
-        public int YCoordinate {  get; set; }
+        private Terrain Terrain { get; set; }
+        private int XCoordinate { get; set; }
+        private int YCoordinate {  get; set; }
 
         public TerrainCoordinates(Terrain Terrain, int XCoordinate, int YCoordinate)
         {

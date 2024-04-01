@@ -8,8 +8,8 @@ namespace DesignPatterns
 {
     internal class Map
     {
-        public string Name { get; set; }
-        public List<TerrainCoordinates> Terrains { get; set; }
+        private string Name { get; set; }
+        private List<TerrainCoordinates> Terrains { get; set; }
 
         public Map(string Name)
         {

@@ -8,8 +8,8 @@ namespace DesignPatterns
 {
     internal class Terrain
     {
-        public string Name { get; set; }
-        public List<string> Rules { get; set; }
+        private string Name { get; set; }
+        private List<string> Rules { get; set; }
 
         public Terrain(string Name)
         {

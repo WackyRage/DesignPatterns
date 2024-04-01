@@ -9,12 +9,12 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        public List<Mission> PrimaryMissions { get; set; }
-        public List<Mission> SecondaryMissions { get; set; }
-        public Map Map { get; set; }
-        public GameType GameType { get; set; }
-        public List<Log> Logs { get; set; }
-        public List<ArmyList> Armies { get; set; }
+        private List<Mission> PrimaryMissions { get; set; }
+        private List<Mission> SecondaryMissions { get; set; }
+        private Map Map { get; set; }
+        private GameType GameType { get; set; }
+        private List<Log> Logs { get; set; }
+        private List<ArmyList> Armies { get; set; }
 
         public Tournament(Map Map, GameType GameType)
         {

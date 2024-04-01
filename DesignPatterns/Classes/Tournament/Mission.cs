@@ -8,9 +8,9 @@ namespace DesignPatterns
 {
     internal class Mission
     {
-        public string Name {  get; set; }
-        public string Description { get; set; }
-        public int Value { get; set; }
+        private string Name {  get; set; }
+        private string Description { get; set; }
+        private int Value { get; set; }
 
         public Mission(string Name, string Description, int Value)
         {
