@@ -26,12 +26,12 @@ namespace DesignPatterns
 
         public void addUnit(UnitInterface unit)
         {
-            units.Add(unit);
+            this.units.Add(unit);
         }
 
         public UnitInterface getUnitById(int id)
         {
-            return units[id];
+            return this.units[id];
         }
 
         public string ToJSON()
@@ -56,7 +56,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return name + ", " + units.Count;
+            return this.name + ", " + this.units.Count;
         }
     }
 }

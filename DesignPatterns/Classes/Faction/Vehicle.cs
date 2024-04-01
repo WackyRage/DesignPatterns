@@ -18,7 +18,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return "(" + name + "," + value.ToString() + ")";
+            return "(" + this.name + "," + this.value.ToString() + ")";
         }
     }
 }

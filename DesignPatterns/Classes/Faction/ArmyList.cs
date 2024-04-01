@@ -17,7 +17,7 @@ namespace DesignPatterns
         {
             this.armyName = armyName;
             this.playerName = playerName;
-            units = new();
+            this.units = new();
         }
 
         public ArmyList(string armyName, string playerName, List<UnitInterface> units)
@@ -60,7 +60,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return armyName + ", " + playerName + ", " + units.Count;
+            return this.armyName + ", " + this.playerName + ", " + this.units.Count;
         }
     }
 }
