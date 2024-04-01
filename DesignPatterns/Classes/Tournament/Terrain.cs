@@ -8,35 +8,35 @@ namespace DesignPatterns
 {
     internal class Terrain
     {
-        private string Name { get; set; }
-        private List<string> Rules { get; set; }
+        private string name { get; set; }
+        private List<string> rules { get; set; }
 
-        public Terrain(string Name)
+        public Terrain(string name)
         {
-            this.Name = Name;
-            this.Rules = new();
+            this.name = name;
+            this.rules = new();
         }
 
-        public Terrain(string Name, List<string> Rules)
+        public Terrain(string name, List<string> rules)
         {
-            this.Name = Name;
-            this.Rules = Rules;
+            this.name = name;
+            this.rules = rules;
         }
 
-        public void AddRule(string R)
+        public void addRule(string r)
         {
-            Rules.Add(R);
+            rules.Add(r);
         }
 
-        public string GetRuleById(int Id)
+        public string getRuleById(int id)
         {
-            return Rules[Id];
+            return rules[id];
         }
 
         public string ToJSON()
         {
-            string Rules = JSONObject.ListToJSON(this.Rules);
-            List<string> list = new() { Name, Rules };
+            string rules = JSONObject.ListToJSON(this.rules);
+            List<string> list = new() { this.name, rules };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -44,16 +44,16 @@ namespace DesignPatterns
         public static Terrain FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            List<string> Rules = JSONObject.JSONToList<string>(list[1]);
-            Terrain Terrain = new(Name, Rules);
-            return Terrain;
+            string name = list[0];
+            List<string> rules = JSONObject.JSONToList<string>(list[1]);
+            Terrain terrain = new(name, rules);
+            return terrain;
         }
 
         public override string ToString()
         {
-            string returnString = "" + Name;
-            foreach (string rule in Rules)
+            string returnString = "" + name;
+            foreach (string rule in rules)
             {
                 returnString = returnString + ", " + rule;
             }

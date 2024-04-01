@@ -8,37 +8,37 @@ namespace DesignPatterns
 {
     internal class Map
     {
-        private string Name { get; set; }
-        private List<TerrainCoordinates> Terrains { get; set; }
+        private string name { get; set; }
+        private List<TerrainCoordinates> terrains { get; set; }
 
-        public Map(string Name)
+        public Map(string name)
         {
-            this.Name = Name;
-            this.Terrains = new();
+            this.name = name;
+            this.terrains = new();
         }
 
-        public Map(string Name, List<TerrainCoordinates> Terrains)
+        public Map(string name, List<TerrainCoordinates> terrains)
         {
-            this.Name = Name;
-            this.Terrains = Terrains;
+            this.name = name;
+            this.terrains = terrains;
         }
 
-        public void AddTerrain(Terrain T, int X, int Y)
+        public void addTerrain(Terrain t, int x, int y)
         {
-            Terrains.Add(new TerrainCoordinates(T, X, Y));
+            terrains.Add(new TerrainCoordinates(t, x, y));
         }
 
-        public TerrainCoordinates GetTerrainById(int Id) 
+        public TerrainCoordinates getTerrainById(int id) 
         {
-            return Terrains[Id];
+            return terrains[id];
         }
 
         public string ToJSON()
         {
-            List<string> list = new() { Name };
-            foreach (TerrainCoordinates Terrain in Terrains)
+            List<string> list = new() { this.name };
+            foreach (TerrainCoordinates terrain in terrains)
             {
-                list.Add(Terrain.ToJSON());
+                list.Add(terrain.ToJSON());
             }
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
@@ -47,19 +47,19 @@ namespace DesignPatterns
         public static Map FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            List<TerrainCoordinates> Terrains = new();
+            string name = list[0];
+            List<TerrainCoordinates> terrains = new();
             for(int i = 1; i < list.Count; i++)
             {
-                Terrains.Add(TerrainCoordinates.FromJSON(list[i]));
+                terrains.Add(TerrainCoordinates.FromJSON(list[i]));
             }
-            Map Map = new(Name, Terrains);
-            return Map;
+            Map map = new(name, terrains);
+            return map;
         }
 
         public override string ToString()
         {
-            return this.Name + ", " + this.Terrains.Count;
+            return this.name + ", " + this.terrains.Count;
         }
     }
 }

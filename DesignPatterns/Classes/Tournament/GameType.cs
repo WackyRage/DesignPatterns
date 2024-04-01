@@ -8,38 +8,38 @@ namespace DesignPatterns
 {
     internal class GameType
     {
-        private List<Faction> Factions { get; set; }
-        private string Name {  get; set; }
+        private List<Faction> factions { get; set; }
+        private string name {  get; set; }
 
-        public GameType(string Name) 
+        public GameType(string name) 
         {
-            this.Name = Name;
-            this.Factions = new();
+            this.name = name;
+            this.factions = new();
         }
 
-        public GameType(string Name, List<Faction> Factions) 
+        public GameType(string name, List<Faction> factions) 
         {
-            this.Name = Name;
-            this.Factions = Factions;
+            this.name = name;
+            this.factions = factions;
         }
 
 
-        public void AddFaction(Faction Faction)
+        public void addFaction(Faction faction)
         {
-            Factions.Add(Faction);
+            this.factions.Add(faction);
         }
 
-        public Faction GetFactionById(int Id)
+        public Faction getFactionById(int id)
         {
-            return Factions[Id];
+            return this.factions[id];
         }
 
         public string ToJSON() 
         {
-            List<string> list = new() { Name };
-            foreach (Faction Faction in Factions)
+            List<string> list = new() { this.name };
+            foreach (Faction faction in factions)
             {
-                list.Add(Faction.ToJSON());
+                list.Add(faction.ToJSON());
             }
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -48,20 +48,20 @@ namespace DesignPatterns
         public static GameType FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            List<Faction> Factions = new();
-            for(int i = 1; i < list.Count; i++)
+            string name = list[0];
+            List<Faction> factions = new();
+            for (int i = 1; i < list.Count; i++)
             {
-                Faction Faction = Faction.FromJSON(list[i]);
-                Factions.Add(Faction);
+                Faction faction = Faction.FromJSON(list[i]);
+                factions.Add(faction);
             }
-            GameType GameType = new(Name, Factions);
-            return GameType;
+            GameType gameType = new(name, factions);
+            return gameType;
         }
 
         public override string ToString()
         {
-            return Name + ", " + Factions.Count;
+            return this.name + ", " + this.factions.Count;
         }
     }
 }

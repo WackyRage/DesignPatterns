@@ -9,97 +9,97 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        private List<Mission> PrimaryMissions { get; set; }
-        private List<Mission> SecondaryMissions { get; set; }
-        private Map Map { get; set; }
-        private GameType GameType { get; set; }
-        private List<Log> Logs { get; set; }
-        private List<ArmyList> Armies { get; set; }
+        private List<Mission> primaryMissions { get; set; }
+        private List<Mission> secondaryMissions { get; set; }
+        private Map map { get; set; }
+        private GameType gameType { get; set; }
+        private List<Log> logs { get; set; }
+        private List<ArmyList> armies { get; set; }
 
-        public Tournament(Map Map, GameType GameType)
+        public Tournament(Map map, GameType gameType)
         {
-            this.Map = Map;
-            this.GameType = GameType;
-            this.PrimaryMissions = new();
-            this.SecondaryMissions = new();
-            this.Logs = new();
-            this.Armies = new();
+            this.map = map;
+            this.gameType = gameType;
+            this.primaryMissions = new();
+            this.secondaryMissions = new();
+            this.logs = new();
+            this.armies = new();
         }
 
-        public Tournament(Map Map, GameType GameType, List<Mission> PrimaryMissions, List<Mission> SecondaryMissions, List<Log> Logs, List<ArmyList> Armies)
+        public Tournament(Map map, GameType gameType, List<Mission> primaryMissions, List<Mission> secondaryMissions, List<Log> logs, List<ArmyList> armies)
         {
-            this.Map = Map;
-            this.GameType = GameType;
-            this.PrimaryMissions = PrimaryMissions;
-            this.SecondaryMissions = SecondaryMissions;
-            this.Logs = Logs;
-            this.Armies = Armies;
+            this.map = map;
+            this.gameType = gameType;
+            this.primaryMissions = primaryMissions;
+            this.secondaryMissions = secondaryMissions;
+            this.logs = logs;
+            this.armies = armies;
         }
 
-        public void AddPrimaryMission(Mission M)
+        public void addPrimaryMission(Mission m)
         {
-            PrimaryMissions.Add(M);
+            this.primaryMissions.Add(m);
         }
 
-        public void AddSecondaryMission(Mission M)
+        public void addSecondaryMission(Mission m)
         {
-            SecondaryMissions.Add(M);
+            this.secondaryMissions.Add(m);
         }
 
-        public void AddLog(Log L)
+        public void addLog(Log l)
         {
-            Logs.Add(L);
+            this.logs.Add(l);
         }
 
-        public void AddArmy(ArmyList A)
+        public void addArmy(ArmyList a)
         {
-            Armies.Add(A);
+            this.armies.Add(a);
         }
 
-        public Mission GetPrimaryMissionById(int Id)
+        public Mission getPrimaryMissionById(int id)
         {
-            return PrimaryMissions[Id];
+            return this.primaryMissions[id];
         }
 
-        public Mission GetSecondaryMissionById(int Id)
+        public Mission getSecondaryMissionById(int id)
         {
-            return SecondaryMissions[Id];
+            return this.secondaryMissions[id];
         }
 
-        public Log GetLogById(int Id)
+        public Log getLogById(int id)
         {
-            return Logs[Id];
+            return this.logs[id];
         }
 
-        public ArmyList GetArmyById(int Id)
+        public ArmyList getArmyById(int id)
         {
-            return Armies[Id];
+            return this.armies[id];
         }
 
         public string ToJSON()
         {
-            List<string> PrimaryMissions = new();
-            foreach(Mission Mission in this.PrimaryMissions)
+            List<string> primaryMissions = new();
+            foreach(Mission mission in this.primaryMissions)
             {
-                PrimaryMissions.Add(Mission.ToJSON());
+                primaryMissions.Add(mission.ToJSON());
             }
-            List<string> SecondaryMissions = new();
-            foreach(Mission mission in this.SecondaryMissions)
+            List<string> secondaryMissions = new();
+            foreach(Mission mission in this.secondaryMissions)
             {
-                SecondaryMissions.Add(mission.ToJSON());
+                secondaryMissions.Add(mission.ToJSON());
             }
-            List<string> Logs = new();
-            foreach (Log Log in this.Logs)
+            List<string> logs = new();
+            foreach (Log log in this.logs)
             {
-                Logs.Add(Log.ToJSON());
+                logs.Add(log.ToJSON());
             }
-            List<string> Armies = new();
-            foreach(ArmyList Army in this.Armies)
+            List<string> armies = new();
+            foreach(ArmyList army in this.armies)
             {
-                Armies.Add(Army.ToJSON());
+                armies.Add(army.ToJSON());
             }
 
-            List<string> list = new() { this.Map.ToJSON(), this.GameType.ToJSON(), JSONObject.ListToJSON(PrimaryMissions), JSONObject.ListToJSON(SecondaryMissions), JSONObject.ListToJSON(Logs), JSONObject.ListToJSON(Armies) };
+            List<string> list = new() { this.map.ToJSON(), this.gameType.ToJSON(), JSONObject.ListToJSON(primaryMissions), JSONObject.ListToJSON(secondaryMissions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -144,7 +144,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this.Map.ToString() + ", " + this.GameType.ToString() + ", " + this.PrimaryMissions.Count + ", " + this.SecondaryMissions.Count + ", " + this.Logs.Count + ", " + this.Armies.Count;
+            return this.map.ToString() + ", " + this.gameType.ToString() + ", " + this.primaryMissions.Count + ", " + this.secondaryMissions.Count + ", " + this.logs.Count + ", " + this.armies.Count;
         }
     }
 }

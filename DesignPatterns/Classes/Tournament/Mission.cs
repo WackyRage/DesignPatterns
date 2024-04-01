@@ -8,20 +8,20 @@ namespace DesignPatterns
 {
     internal class Mission
     {
-        private string Name {  get; set; }
-        private string Description { get; set; }
-        private int Value { get; set; }
+        private string name {  get; set; }
+        private string description { get; set; }
+        private int value { get; set; }
 
-        public Mission(string Name, string Description, int Value)
+        public Mission(string name, string description, int value)
         {
-            this.Name = Name;
-            this.Description = Description;
-            this.Value = Value;
+            this.name = name;
+            this.description = description;
+            this.value = value;
         }
 
         public string ToJSON()
         {
-            List<string> list = new() { this.Name, this.Description, this.Value.ToString() };
+            List<string> list = new() { this.name, this.description, this.value.ToString() };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -29,11 +29,11 @@ namespace DesignPatterns
         public static Mission FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            string Description = list[1];
-            int Value = Convert.ToInt32(list[2]);
-            Mission Mission = new(Name, Description, Value);
-            return Mission;
+            string name = list[0];
+            string description = list[1];
+            int value = Convert.ToInt32(list[2]);
+            Mission mission = new(name, description, value);
+            return mission;
         }
     }
 }

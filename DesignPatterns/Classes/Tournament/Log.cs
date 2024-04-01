@@ -8,33 +8,34 @@ namespace DesignPatterns
 {
     internal class Log
     {
-        private string Message { get; set; }
-        private DateTime Date {  get; set; }
-        private bool Resolved {  get; set; }
+        private string message { get; set; }
+        private DateTime date {  get; set; }
+        private bool resolved {  get; set; }
 
-        public Log(string Message, DateTime Date, bool Resolved)
+        public Log(string message, DateTime date, bool resolved)
         {
-            this.Message = Message;
-            this.Date = Date;
-            this.Resolved = Resolved;
+            this.message = message;
+            this.date = date;
+            this.resolved = resolved;
         }
 
-        public void ChangeResolved()
+        public void changeResolved()
         {
-            if (Resolved)
+            if (this.resolved)
             {
-                Resolved = false;
-            } else
+                this.resolved = false;
+            } 
+            else
             {
-                Resolved = true;
+                this.resolved = true;
             }
         }
 
         public string ToJSON()
         {
-            string Date = JSONObject.ObjectToJSON(this.Date);
-            string Resolved = JSONObject.ObjectToJSON(this.Resolved);
-            List<string> list = new() { Message, Date, Resolved };
+            string date = JSONObject.ObjectToJSON(this.date);
+            string resolved = JSONObject.ObjectToJSON(this.resolved);
+            List<string> list = new() { this.message, date, resolved };
 
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString; 
@@ -43,11 +44,11 @@ namespace DesignPatterns
         public static Log FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Message = list[0];
-            DateTime Date = (DateTime)JSONObject.JSONToObject(list[1]);
-            bool Resolved = (bool)JSONObject.JSONToObject(list[2]);
-            Log Log = new(Message, Date, Resolved);
-            return Log;
+            string message = list[0];
+            DateTime date = (DateTime)JSONObject.JSONToObject(list[1]);
+            bool resolved = (bool)JSONObject.JSONToObject(list[2]);
+            Log log = new(message, date, resolved);
+            return log;
         }
     }
 }
