@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Infantry : Unit
+    internal class Infantry : AbstractUnit, UnitInterface
     {
-        public string Name {  get; set; }
-        public int Value { get; set; }
-
-        public Infantry(string Name, int Value)
+        public Infantry(string Name, int Value) : base(string name, int value)
         {
             this.Name = Name;
             this.Value = Value;

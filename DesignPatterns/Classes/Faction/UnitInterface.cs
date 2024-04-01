@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal interface Unit
+    internal interface UnitInterface
     {
-        public string Name { get; set; }
-        public int Value { get; set; }
-
         string ToJSON();
 
-        public static Unit FromJSON(string jsonString)
+        public static UnitInterface FromJSON(string jsonString)
         {
-            return (Unit)JSONObject.JSONToObject(jsonString);
+            return (UnitInterface)JSONObject.JSONToObject(jsonString);
         }
 
     }
