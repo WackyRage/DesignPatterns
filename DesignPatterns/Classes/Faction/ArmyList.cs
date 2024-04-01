@@ -9,9 +9,9 @@ namespace DesignPatterns
 {
     internal class ArmyList
     {
-        public string ArmyName { get; set; }
-        public string PlayerName { get; set; }
-        public List<Unit> Units { get; set; }
+        private string ArmyName { get; set; }
+        private string PlayerName { get; set; }
+        private List<UnitInterface> Units { get; set; }
         
         public ArmyList(string ArmyName, string PlayerName)
         {
@@ -20,19 +20,19 @@ namespace DesignPatterns
             Units = new();
         }
 
-        public ArmyList(string ArmyName, string PlayerName, List<Unit> Units)
+        public ArmyList(string ArmyName, string PlayerName, List<UnitInterface> Units)
         {
             this.ArmyName = ArmyName;
             this.PlayerName = PlayerName;
             this.Units = Units;
         }
 
-        public void AddUnit(Unit Unit)
+        public void AddUnit(UnitInterface Unit)
         {
             Units.Add(Unit);
         }
 
-        public Unit GetUnitById(int Id)
+        public UnitInterface GetUnitById(int Id)
         {
             return Units[Id];
         }
@@ -52,7 +52,7 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string ArmyName = list[0];
             string PlayerName = list[1];
-            List<Unit> Units = JSONObject.JSONToList<Unit>(list[2]);
+            List<UnitInterface> Units = JSONObject.JSONToList<UnitInterface>(list[2]);
             ArmyList ArmyList = new(ArmyName, PlayerName, Units);
 
             return ArmyList;

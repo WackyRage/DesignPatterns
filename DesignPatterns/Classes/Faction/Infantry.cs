@@ -9,11 +9,7 @@ namespace DesignPatterns
 {
     internal class Infantry : AbstractUnit, UnitInterface
     {
-        public Infantry(string Name, int Value) : base(string name, int value)
-        {
-            this.Name = Name;
-            this.Value = Value;
-        }
+        public Infantry(string name, int value) : base(name, value) {}
 
         public string ToJSON()
         {
