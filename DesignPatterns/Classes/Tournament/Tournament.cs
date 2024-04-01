@@ -15,21 +15,24 @@ namespace DesignPatterns
         public GameType GameType { get; set; }
         public List<Log> Logs { get; set; }
         public List<ArmyList> Armies { get; set; }
+        public String Name {  get; set; }
 
-        public Tournament(Map Map, GameType GameType)
+        public Tournament(Map Map, GameType GameType, String name)
         {
             this.Map = Map;
             this.GameType = GameType;
+            this.Name = name;
             this.PrimaryMissions = new();
             this.SecondaryMissions = new();
             this.Logs = new();
             this.Armies = new();
         }
 
-        public Tournament(Map Map, GameType GameType, List<Mission> PrimaryMissions, List<Mission> SecondaryMissions, List<Log> Logs, List<ArmyList> Armies)
+        public Tournament(Map Map, GameType GameType, String name, List<Mission> PrimaryMissions, List<Mission> SecondaryMissions, List<Log> Logs, List<ArmyList> Armies)
         {
             this.Map = Map;
             this.GameType = GameType;
+            this.Name = name;
             this.PrimaryMissions = PrimaryMissions;
             this.SecondaryMissions = SecondaryMissions;
             this.Logs = Logs;
