@@ -17,10 +17,11 @@ namespace DesignPatterns
         private List<ArmyList> armies { get; set; }
         private string name { get; set; }
 
-        public Tournament(Map map, GameType gameType)
+        public Tournament(Map map, GameType gameType, string name)
         {
             this.map = map;
             this.gameType = gameType;
+            this.name = name;
             this.primaryMissions = new();
             this.secondaryMissions = new();
             this.logs = new();
@@ -100,7 +101,16 @@ namespace DesignPatterns
                 armies.Add(army.ToJSON());
             }
 
-            List<string> list = new() { this.map.ToJSON(), this.gameType.ToJSON(), JSONObject.ListToJSON(primaryMissions), JSONObject.ListToJSON(secondaryMissions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
+            List<string> list = new() 
+            { 
+                this.map.ToJSON(), 
+                this.gameType.ToJSON(),
+                "\"" + this.name + "\"",
+                JSONObject.ListToJSON(primaryMissions), 
+                JSONObject.ListToJSON(secondaryMissions), 
+                JSONObject.ListToJSON(logs), 
+                JSONObject.ListToJSON(armies) 
+            };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }

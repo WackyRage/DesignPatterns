@@ -10,7 +10,7 @@ namespace DesignPatterns
     {
         public UnitFactory() { }
 
-        public UnitInterface CreateUnit(string type, string name, int value)
+        public Unit CreateUnit(string type, string name, int value)
         {
             type = type.Replace(" ", "").ToLower();
             switch (type)

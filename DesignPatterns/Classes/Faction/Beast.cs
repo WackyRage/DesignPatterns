@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Beast: AbstractUnit, UnitInterface
+    internal class Beast: AbstractUnit, Unit
     {
         public Beast(string name, int value) : base(name, value) {}
 
