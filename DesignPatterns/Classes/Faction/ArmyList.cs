@@ -49,7 +49,6 @@ namespace DesignPatterns
                     value += abstractUnit.getValue();
                 }
             }
-
             return value;
         }
 
