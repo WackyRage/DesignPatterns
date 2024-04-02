@@ -9,7 +9,7 @@ namespace DesignPatterns
     internal class Faction
     {
         private string name {  get; set; }
-        private List<UnitInterface> units { get; set; }
+        private List<Unit> units { get; set; }
         private UnitFactory unitFactory = new UnitFactory();
 
         public Faction(string name)
@@ -18,18 +18,18 @@ namespace DesignPatterns
             units = new();
         }
 
-        public Faction(string name, List<UnitInterface> units)
+        public Faction(string name, List<Unit> units)
         {
             this.name = name;
             this.units = units;
         }
 
-        public void addUnit(UnitInterface unit)
+        public void addUnit(Unit unit)
         {
             this.units.Add(unit);
         }
 
-        public UnitInterface getUnitById(int id)
+        public Unit getUnitById(int id)
         {
             return this.units[id];
         }
@@ -48,7 +48,7 @@ namespace DesignPatterns
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string name = list[0];
-            List<UnitInterface> units = JSONObject.JSONToList<UnitInterface>(list[1]);
+            List<Unit> units = JSONObject.JSONToList<Unit>(list[1]);
             Faction Faction = new(name, units);
 
             return Faction;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Vehicle : AbstractUnit, UnitInterface
+    internal class Vehicle : AbstractUnit, Unit
     {
         public Vehicle(string name, int value) : base(name, value) {}
 

@@ -11,7 +11,7 @@ namespace DesignPatterns
     {
         private string armyName { get; set; }
         private string playerName { get; set; }
-        private List<UnitInterface> units { get; set; }
+        private List<Unit> units { get; set; }
         
         public ArmyList(string armyName, string playerName)
         {
@@ -20,19 +20,19 @@ namespace DesignPatterns
             this.units = new();
         }
 
-        public ArmyList(string armyName, string playerName, List<UnitInterface> units)
+        public ArmyList(string armyName, string playerName, List<Unit> units)
         {
             this.armyName = armyName;
             this.playerName = playerName;
             this.units = units;
         }
 
-        public void addUnit(UnitInterface unit)
+        public void addUnit(Unit unit)
         {
             units.Add(unit);
         }
 
-        public UnitInterface getUnitById(int id)
+        public Unit getUnitById(int id)
         {
             return units[id];
         }
@@ -52,7 +52,7 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string armyName = list[0];
             string playerName = list[1];
-            List<UnitInterface> units = JSONObject.JSONToList<UnitInterface>(list[2]);
+            List<Unit> units = JSONObject.JSONToList<Unit>(list[2]);
             ArmyList armyList = new(armyName, playerName, units);
 
             return armyList;
