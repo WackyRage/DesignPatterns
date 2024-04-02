@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -35,6 +36,20 @@ namespace DesignPatterns
         public Unit getUnitById(int id)
         {
             return units[id];
+        }
+
+        public int getArmyValue()
+        {
+            int value = 0;
+            
+            foreach ( Unit unit in  units )
+            {
+                if (unit is AbstractUnit abstractUnit)
+                {
+                    value += abstractUnit.getValue();
+                }
+            }
+            return value;
         }
 
         public string ToJSON()
