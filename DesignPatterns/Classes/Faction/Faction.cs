@@ -49,9 +49,9 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string name = list[0];
             List<Unit> units = JSONObject.JSONToList<Unit>(list[1]);
-            Faction Faction = new(name, units);
+            Faction faction = new(name, units);
 
-            return Faction;
+            return faction;
         }
 
         public override string ToString()

@@ -15,6 +15,7 @@ namespace DesignPatterns
         private GameType gameType { get; set; }
         private List<Log> logs { get; set; }
         private List<ArmyList> armies { get; set; }
+        private string name { get; set; }
 
         public Tournament(Map map, GameType gameType)
         {
@@ -107,39 +108,39 @@ namespace DesignPatterns
         public static Tournament FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            Map Map = Map.FromJSON(list[0]);
-            GameType GameType = GameType.FromJSON(list[1]);
+            Map map = Map.FromJSON(list[0]);
+            GameType gameType = GameType.FromJSON(list[1]);
 
-            List<string> Temp = JSONObject.JSONToList<string>(list[2]);
-            List<Mission> PrimaryMissions = new();
-            foreach (string M in Temp)
+            List<string> temp = JSONObject.JSONToList<string>(list[2]);
+            List<Mission> primaryMissions = new();
+            foreach (string m in temp)
             {
-                PrimaryMissions.Add(Mission.FromJSON(M));
+                primaryMissions.Add(Mission.FromJSON(m));
             }
 
-            Temp = JSONObject.JSONToList<string>(list[3]);
-            List<Mission> SecondaryMissions = new();
-            foreach (string M in Temp)
+            temp = JSONObject.JSONToList<string>(list[3]);
+            List<Mission> secondaryMissions = new();
+            foreach (string m in temp)
             {
-                SecondaryMissions.Add(Mission.FromJSON(M));
+                secondaryMissions.Add(Mission.FromJSON(m));
             }
 
-            Temp = JSONObject.JSONToList<string>(list[4]);
-            List<Log> Logs = new();
-            foreach (string L in Temp)
+            temp = JSONObject.JSONToList<string>(list[4]);
+            List<Log> logs = new();
+            foreach (string l in temp)
             {
-                Logs.Add(Log.FromJSON(L));
+                logs.Add(Log.FromJSON(l));
             }
 
-            Temp = JSONObject.JSONToList<string>(list[5]);
-            List<ArmyList> Armies = new();
-            foreach (string A in Temp)
+            temp = JSONObject.JSONToList<string>(list[5]);
+            List<ArmyList> armies = new();
+            foreach (string a in temp)
             {
-                Armies.Add(ArmyList.FromJSON(A));
+                armies.Add(ArmyList.FromJSON(a));
             }
 
-            Tournament Tournament = new(Map, GameType, PrimaryMissions, SecondaryMissions, Logs, Armies);
-            return Tournament;
+            Tournament tournament = new(map, gameType, primaryMissions, secondaryMissions, logs, armies);
+            return tournament;
         }
 
         public override string ToString()
