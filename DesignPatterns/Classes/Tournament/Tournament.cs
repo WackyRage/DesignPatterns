@@ -28,10 +28,11 @@ namespace DesignPatterns
             this.armies = new();
         }
 
-        public Tournament(Map map, GameType gameType, List<Mission> primaryMissions, List<Mission> secondaryMissions, List<Log> logs, List<ArmyList> armies)
+        public Tournament(Map map, GameType gameType, string name, List<Mission> primaryMissions, List<Mission> secondaryMissions, List<Log> logs, List<ArmyList> armies)
         {
             this.map = map;
             this.gameType = gameType;
+            this.name = name;
             this.primaryMissions = primaryMissions;
             this.secondaryMissions = secondaryMissions;
             this.logs = logs;
@@ -120,36 +121,37 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             Map map = Map.FromJSON(list[0]);
             GameType gameType = GameType.FromJSON(list[1]);
+            string name = list[2];
 
-            List<string> temp = JSONObject.JSONToList<string>(list[2]);
+            List<string> temp = JSONObject.JSONToList<string>(list[3]);
             List<Mission> primaryMissions = new();
             foreach (string m in temp)
             {
                 primaryMissions.Add(Mission.FromJSON(m));
             }
 
-            temp = JSONObject.JSONToList<string>(list[3]);
+            temp = JSONObject.JSONToList<string>(list[4]);
             List<Mission> secondaryMissions = new();
             foreach (string m in temp)
             {
                 secondaryMissions.Add(Mission.FromJSON(m));
             }
 
-            temp = JSONObject.JSONToList<string>(list[4]);
+            temp = JSONObject.JSONToList<string>(list[5]);
             List<Log> logs = new();
             foreach (string l in temp)
             {
                 logs.Add(Log.FromJSON(l));
             }
 
-            temp = JSONObject.JSONToList<string>(list[5]);
+            temp = JSONObject.JSONToList<string>(list[6]);
             List<ArmyList> armies = new();
             foreach (string a in temp)
             {
                 armies.Add(ArmyList.FromJSON(a));
             }
 
-            Tournament tournament = new(map, gameType, primaryMissions, secondaryMissions, logs, armies);
+            Tournament tournament = new(map, gameType, name, primaryMissions, secondaryMissions, logs, armies);
             return tournament;
         }
 
