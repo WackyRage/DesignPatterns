@@ -78,12 +78,15 @@ namespace DesignPatterns
 
         public static List<string> ReadJSONFile(string FileName)
         {
+            /*
             var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
             while (directory != null && !directory.GetFiles("*.sln").Any())
             {
                 directory = directory.Parent;
             }
-            string path = directory.FullName;
+            */
+
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
             string jsonString = "";
             using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
             {

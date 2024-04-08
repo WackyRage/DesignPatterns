@@ -98,7 +98,7 @@
         https://stackoverflow.com/questions/76029311/how-to-add-on-click-event-on-entire-datatemplate-inside-maui-collection-view 
         https://www.youtube.com/watch?v=l5qJRYwhyOY&list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY&index=4 
         -->
-        <CollectionView Grid.Row="7" Grid.Column="2" Margin="20">
+        <CollectionView x:Name="collectionViewTournament" Grid.Row="7" Grid.Column="2" Margin="20">
             <CollectionView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Player One + Player Faction + Player Points</x:String>
