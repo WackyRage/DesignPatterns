@@ -10,46 +10,70 @@ namespace DesignPatterns
 {
     internal class ArmyList
     {
-        private string armyName { get; set; }
-        private string playerName { get; set; }
-        private List<Unit> units { get; set; }
-        
+        private string _armyName;
+        private string _playerName;
+        private List<AbstractUnit> units { get; set; }
+
         public ArmyList(string armyName, string playerName)
         {
-            this.armyName = armyName;
-            this.playerName = playerName;
+            this._armyName = armyName;
+            this._playerName = playerName;
             this.units = new();
         }
 
-        public ArmyList(string armyName, string playerName, List<Unit> units)
+        public ArmyList(string armyName, string playerName, List<AbstractUnit> units)
         {
-            this.armyName = armyName;
-            this.playerName = playerName;
+            this._armyName = armyName;
+            this._playerName = playerName;
             this.units = units;
         }
 
-        public void addUnit(Unit unit)
+        public string armyName
+        {
+            get { return _armyName; }
+            set { _armyName = value; }
+        }
+
+        public string playerName
+        {
+            get { return _playerName; }
+            set { _playerName = value; }
+        }
+
+        public void addUnit(AbstractUnit unit)
         {
             units.Add(unit);
         }
 
-        public Unit getUnitById(int id)
+        public AbstractUnit getUnitById(int id)
         {
-            return units[id];
+            if (id >= 0 && id < units.Count)
+            {
+                return units[id];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Invalid unit ID.");
+            }
         }
 
         public int getArmyValue()
         {
             int value = 0;
-            
-            foreach ( Unit unit in  units )
+
+            foreach (AbstractUnit unit in units)
             {
                 if (unit is AbstractUnit abstractUnit)
                 {
-                    value += abstractUnit.getValue();
+                    value += unit.getValue();
                 }
             }
             return value;
+        }
+
+        public int getArmyCount()
+        {
+            return units.Count;
         }
 
         public string ToJSON()
@@ -67,7 +91,7 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string armyName = list[0];
             string playerName = list[1];
-            List<Unit> units = JSONObject.JSONToList<Unit>(list[2]);
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[2]);
             ArmyList armyList = new(armyName, playerName, units);
 
             return armyList;
