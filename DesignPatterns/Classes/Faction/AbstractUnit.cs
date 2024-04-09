@@ -17,24 +17,16 @@ namespace DesignPatterns.Classes.Faction
             this.value = value;
         }
 
-        public string getName() 
+        public string Name
         {
-            return this.name;     
+            get { return name; }
+            set { name = value; }
         }
 
-        public int getValue()
+        public int Value
         {
-            return this.value;
-        }
-        
-        public void setValue(int value)
-        {
-            this.value = value;
-        }
-
-        public void setName(string name)
-        { 
-            this.name = name; 
+            get { return value; }
+            set { this.value = value; }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,29 +10,56 @@ namespace DesignPatterns
     internal class Faction
     {
         private string name {  get; set; }
-        private List<Unit> units { get; set; }
-        private UnitFactory unitFactory = new UnitFactory();
+        private List<AbstractUnit> units { get; set; }
+        private UnitFactory unitFactory;
 
         public Faction(string name)
         {
             this.name = name;
+            this.unitFactory = new UnitFactory();
             units = new();
         }
 
-        public Faction(string name, List<Unit> units)
+        public Faction(string name, List<AbstractUnit> units)
         {
             this.name = name;
+            this.unitFactory = new UnitFactory();
             this.units = units;
         }
 
-        public void addUnit(Unit unit)
+        public void addUnit(AbstractUnit unit)
         {
             this.units.Add(unit);
         }
 
-        public Unit getUnitById(int id)
+        public void addUnit(string type, string name, int value)
         {
-            return this.units[id];
+            AbstractUnit unit = unitFactory.CreateUnit(type, name, value);
+            if (unit != null)
+            {
+                this.units.Add(unit);
+            }
+            else
+            {
+                throw new ArgumentException($"Failed to add unit with type '{type}'.");
+            }
+        }
+
+        public AbstractUnit getUnitById(int id)
+        {
+            if (id >= 0 && id < getUnitCount())
+            {
+                return this.units[id];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Invalid unit ID.");
+            }
+        }
+
+        public int getUnitCount()
+        {
+            return units.Count;
         }
 
         public string ToJSON()
@@ -48,7 +76,7 @@ namespace DesignPatterns
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string name = list[0];
-            List<Unit> units = JSONObject.JSONToList<Unit>(list[1]);
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[1]);
             Faction Faction = new(name, units);
 
             return Faction;

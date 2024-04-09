@@ -41,12 +41,12 @@ namespace DesignPatterns
         public int getArmyValue()
         {
             int value = 0;
-            
-            foreach ( Unit unit in  units )
+
+            foreach (AbstractUnit unit in units)
             {
                 if (unit is AbstractUnit abstractUnit)
                 {
-                    value += abstractUnit.getValue();
+                    value += unit.Value;
                 }
             }
             return value;

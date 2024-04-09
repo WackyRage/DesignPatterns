@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace DesignPatterns
     {
         public UnitFactory() { }
 
-        public Unit CreateUnit(string type, string name, int value)
+        public AbstractUnit CreateUnit(string type, string name, int value)
         {
             type = type.Replace(" ", "").ToLower();
             switch (type)
@@ -25,7 +26,7 @@ namespace DesignPatterns
                     return new Beast(name, value);
 
                 default:
-                    return null;
+                    throw new ArgumentException($"Unknown unit type '{type}'.");
             }
         }
     }
