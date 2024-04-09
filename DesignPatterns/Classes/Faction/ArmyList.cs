@@ -91,7 +91,7 @@ namespace DesignPatterns
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string armyName = list[0];
             string playerName = list[1];
-            List<Unit> units = JSONObject.JSONToList<Unit>(list[2]);
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[2]);
             ArmyList armyList = new(armyName, playerName, units);
 
             return armyList;

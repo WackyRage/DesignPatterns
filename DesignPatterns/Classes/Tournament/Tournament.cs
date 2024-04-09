@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -15,21 +16,27 @@ namespace DesignPatterns
         private GameType gameType { get; set; }
         private List<Log> logs { get; set; }
         private List<ArmyList> armies { get; set; }
+        private int armyLimit { get; set; }
+        private string name { get; set; }
 
-        public Tournament(Map map, GameType gameType)
+        public Tournament(Map map, GameType gameType, string name, int armyLimit)
         {
             this.map = map;
             this.gameType = gameType;
+            this.name = name;
+            this.armyLimit = armyLimit;
             this.primaryMissions = new();
             this.secondaryMissions = new();
             this.logs = new();
             this.armies = new();
         }
 
-        public Tournament(Map map, GameType gameType, List<Mission> primaryMissions, List<Mission> secondaryMissions, List<Log> logs, List<ArmyList> armies)
+        public Tournament(Map map, GameType gameType, string name, int armyLimit, List<Mission> primaryMissions, List<Mission> secondaryMissions, List<Log> logs, List<ArmyList> armies)
         {
             this.map = map;
             this.gameType = gameType;
+            this.name = name;
+            this.armyLimit = armyLimit;
             this.primaryMissions = primaryMissions;
             this.secondaryMissions = secondaryMissions;
             this.logs = logs;
@@ -53,7 +60,49 @@ namespace DesignPatterns
 
         public void addArmy(ArmyList a)
         {
-            this.armies.Add(a);
+            if (a.getArmyValue() <= this.armyLimit)
+            {
+                this.armies.Add(a);
+            }
+            else
+            {
+                throw new InvalidOperationException("Adding the army exceeds the tournament's army limit.");
+            }
+        }
+
+        public void addNewArmy(String armyName, String playerName)
+        {
+            try
+            {
+                this.armies.Add(new ArmyList(armyName, playerName));
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException($"An error occurred while adding a new army: {e.Message}");
+
+            }
+        }
+
+        public void addUnitToArmy(string playerName, string armyName, AbstractUnit unit)
+        {
+            foreach (var army in this.armies)
+            {
+                if (army.armyName == armyName && army.playerName == playerName)
+                {
+                    int toBeValue = army.getArmyValue() + unit.Value;
+                    if (toBeValue <= this.armyLimit)
+                    {
+                        army.addUnit(unit);
+                        return;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Adding the unit exceeds the tournament's army limit.");
+                    }
+                }
+            }
+
+            throw new ArgumentException("Army not found for the specified player and army name.");
         }
 
         public Mission getPrimaryMissionById(int id)
@@ -74,6 +123,32 @@ namespace DesignPatterns
         public ArmyList getArmyById(int id)
         {
             return this.armies[id];
+        }
+
+        public ArmyList getArmyByPlayer(string player)
+        {
+            foreach (var army in this.armies)
+            {
+                if (army.playerName == player)
+                {
+                    return army;
+                }
+            }
+
+            throw new Exception("Army not found for the specified player.");
+        }
+
+        public ArmyList getArmyByName(string name)
+        {
+            foreach (var army in this.armies)
+            {
+                if (army.armyName == name)
+                {
+                    return army;
+                }
+            }
+
+            throw new Exception("Army not found for the specified name.");
         }
 
         public string ToJSON()
