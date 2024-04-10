@@ -64,14 +64,23 @@ namespace DesignPatterns
 
         public static void WriteJSONToFile(List<string> jsonStrings, string FileName)
         {
+            /*
             var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
             while (directory != null && !directory.GetFiles("*.sln").Any())
             {
                 directory = directory.Parent;
             }
             string path = directory.FullName;
+            */
+            string path = //@"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+                          @"D:\Users\frank\source\repos\DesignPatterns";
+            path = Path.Combine(path, "SaveData", FileName);
+            if(!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
             string jsonString = JSONObject.ListToJSON(jsonStrings);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(path, "SaveData", FileName)))
+            using (StreamWriter outputFile = new StreamWriter(path))
             {
                 outputFile.Write(jsonString);
             }
@@ -89,8 +98,8 @@ namespace DesignPatterns
             string path = directory.FullName;
             */
 
-            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
-                          //@"D:\Users\frank\source\repos\DesignPatterns";
+            string path = //@"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+                          @"D:\Users\frank\source\repos\DesignPatterns";
             string jsonString = "";
             using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
             {

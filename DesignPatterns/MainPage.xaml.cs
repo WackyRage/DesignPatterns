@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maui.Storage;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -100,6 +101,16 @@ namespace DesignPatterns
                     SecondaryMissions.Add(temp);
                 }
             }*/
+        }
+
+        public void ExampleSave()
+        {
+            List<string> LS = new();
+            foreach (Tournament T in Tournaments) 
+            {
+                LS.Add(T.ToJSON());
+            }
+            JSONObject.WriteJSONToFile(LS, "Tournament.json");
         }
     }
 }
