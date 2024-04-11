@@ -28,7 +28,7 @@ namespace DesignPatterns
 
         public void Button_Clicked_Tournament(object sender, EventArgs e) 
         {
-            Navigation.PushAsync(new TournamentOverview.TournamentOverview(Tournaments));
+            Navigation.PushAsync(new TournamentOverview.TournamentOverview(Tournaments, Maps, PrimaryMissions, SecondaryMissions));
         }
         public void Button_Clicked_Map(object sender, EventArgs e)
         {
