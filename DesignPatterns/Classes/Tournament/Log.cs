@@ -8,9 +8,9 @@ namespace DesignPatterns
 {
     internal class Log
     {
-        private string message { get; set; }
-        private DateTime date {  get; set; }
-        private bool resolved {  get; set; }
+        private string message;
+        private DateTime date;
+        private bool resolved;
 
         public Log(string message, DateTime date, bool resolved)
         {

@@ -9,8 +9,8 @@ namespace DesignPatterns
 {
     internal class Faction
     {
-        private string name {  get; set; }
-        private List<AbstractUnit> units { get; set; }
+        private string name;
+        private List<AbstractUnit> units;
         private UnitFactory unitFactory;
 
         public Faction(string name)

@@ -10,13 +10,13 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        private List<Mission> missions { get; set; }
-        private Map map { get; set; }
-        private GameType gameType { get; set; }
-        private List<Log> logs { get; set; }
-        private List<ArmyList> armies { get; set; }
-        private int armyLimit { get; set; }
-        private string name { get; set; }
+        private List<Mission> missions;
+        private Map map;
+        private GameType gameType;
+        private List<Log> logs;
+        private List<ArmyList> armies;
+        private int armyLimit;
+        private string name;
 
         public Tournament(Map map, GameType gameType, string name, int armyLimit)
         {
@@ -186,7 +186,7 @@ namespace DesignPatterns
                 armies.Add(ArmyList.FromJSON(a));
             }
 
-            Tournament Tournament = new(map, gameType, missions, logs, armies);
+            Tournament Tournament = new(map, gameType, "Name", 1, missions, logs, armies);
             return Tournament;
         }
 

@@ -8,8 +8,8 @@ namespace DesignPatterns
 {
     internal class GameType
     {
-        private List<Faction> factions { get; set; }
-        private string name {  get; set; }
+        private List<Faction> factions;
+        private string name;
 
         public GameType(string name) 
         {
