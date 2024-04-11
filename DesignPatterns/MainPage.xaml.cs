@@ -32,17 +32,17 @@ namespace DesignPatterns
         }
         public void Button_Clicked_Map(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MapOverview.MapOverview());
+            Navigation.PushAsync(new MapOverview.MapOverview(Maps));
         }
 
         public void Button_Clicked_Main(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview());
+            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview(PrimaryMissions));
         }
 
         public void Button_Clicked_Secundary(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview());
+            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview(SecondaryMissions));
         }
 
         public void refreshJsons() 
@@ -50,8 +50,7 @@ namespace DesignPatterns
             FromJSON("Tournaments.json", "Tournament");
             FromJSON("Factions.json", "Faction");
             FromJSON("Maps.json", "Map");
-            //this.PrimaryMissions = primaryMissions.FromJSON();
-            //this.SecundaryMissions = secundaryMissions.FromJSON();
+            FromJSON("Missions.json", "Mission");
         }
 
         public void FromJSON(String jsonString, String fileType)
@@ -83,24 +82,24 @@ namespace DesignPatterns
                     Map temp = Map.FromJSON(item);
                     Maps.Add(temp);
                 }
-            }/*else if (fileType == "PrimaryMission")
+            }
+            else if (fileType == "Mission")
             {
                 PrimaryMissions.Clear();
-                foreach (String item in jsonList)
-                {
-                    PrimaryMission temp = PrimaryMission.FromJSON(item);
-                    PrimaryMissions.Add(temp);
-                }
-            }
-            else if (fileType == "SecondaryMission")
-            {
                 SecondaryMissions.Clear();
                 foreach (String item in jsonList)
                 {
-                    SecondaryMission temp = SecondaryMission.FromJSON(item);
-                    SecondaryMissions.Add(temp);
+                    Mission temp = Mission.FromJSON(item);
+                    if (temp.MissionType == 1) 
+                    {
+                        PrimaryMissions.Add(temp);
+                    }
+                    else if (temp.MissionType == 2)
+                    {
+                        SecondaryMissions.Add(temp);
+                    }
                 }
-            }*/
+            }
         }
 
         public void ExampleSave()

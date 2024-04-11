@@ -5,7 +5,8 @@
     <Grid RowDefinitions="50, 50, *"
           ColumnDefinitions=".50*, .25*"
           RowSpacing="10"
-          ColumnSpacing="10">
+          ColumnSpacing="10"
+          BackgroundColor="Gray">
         <Label Text="Create New Map Type:"
                Grid.Row="0"
                Grid.Column="0"
@@ -23,28 +24,12 @@
                 Clicked="Button_Clicked_Back"
                 BackgroundColor="DarkRed"/>
 
-        <CollectionView Grid.Row="2" Grid.Column="0" Margin="20">
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Map One</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                    <x:String>Map Two</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
+        <CollectionView x:Name="collectionViewMap" Grid.Row="2" Grid.Column="0" Margin="20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding .}"
+                            <Label Text="{Binding Name}"
                                    FontSize="24"/>
                         </Frame>
                     </Grid>

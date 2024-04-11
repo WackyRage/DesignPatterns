@@ -2,7 +2,6 @@
 
 namespace DesignPatterns.FactionOverview
 {
-
     public partial class FactionOverview : ContentPage
     {
         ArrayList Factions = new ArrayList();
