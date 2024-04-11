@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,37 +9,64 @@ namespace DesignPatterns
 {
     internal class Faction
     {
-        public string Name {  get; set; }
-        public List<Unit> Units { get; set; }
-        private UnitFactory unitFactory = new UnitFactory();
+        private string name {  get; set; }
+        private List<AbstractUnit> units { get; set; }
+        private UnitFactory unitFactory;
 
-        public Faction(string Name)
+        public Faction(string name)
         {
-            this.Name = Name;
-            Units = new();
+            this.name = name;
+            this.unitFactory = new UnitFactory();
+            units = new();
         }
 
-        public Faction(string Name, List<Unit> Units)
+        public Faction(string name, List<AbstractUnit> units)
         {
-            this.Name = Name;
-            this.Units = Units;
+            this.name = name;
+            this.unitFactory = new UnitFactory();
+            this.units = units;
         }
 
-        public void AddUnit(Unit Unit)
+        public void addUnit(AbstractUnit unit)
         {
-            Units.Add(Unit);
+            this.units.Add(unit);
         }
 
-        public Unit GetUnitById(int Id)
+        public void addUnit(string type, string name, int value)
         {
-            return Units[Id];
+            AbstractUnit unit = unitFactory.CreateUnit(type, name, value);
+            if (unit != null)
+            {
+                this.units.Add(unit);
+            }
+            else
+            {
+                throw new ArgumentException($"Failed to add unit with type '{type}'.");
+            }
+        }
+
+        public AbstractUnit getUnitById(int id)
+        {
+            if (id >= 0 && id < getUnitCount())
+            {
+                return this.units[id];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Invalid unit ID.");
+            }
+        }
+
+        public int getUnitCount()
+        {
+            return units.Count;
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.Units);
+            string JU = JSONObject.ListToJSON(this.units);
 
-            List<string> list = new() { this.Name, JU };
+            List<string> list = new() { this.name, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -47,16 +75,16 @@ namespace DesignPatterns
         public static Faction FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string Name = list[0];
-            List<Unit> Units = JSONObject.JSONToList<Unit>(list[1]);
-            Faction Faction = new(Name, Units);
+            string name = list[0];
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[1]);
+            Faction Faction = new(name, units);
 
             return Faction;
         }
 
         public override string ToString()
         {
-            return Name + ", " + Units.Count;
+            return this.name + ", " + this.units.Count;
         }
     }
 }

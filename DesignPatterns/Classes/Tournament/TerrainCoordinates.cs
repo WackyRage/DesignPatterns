@@ -9,32 +9,32 @@ namespace DesignPatterns
 {
     internal class TerrainCoordinates
     {
-        public Terrain Terrain { get; set; }
-        public int XCoordinate { get; set; }
-        public int YCoordinate {  get; set; }
+        private Terrain terrain { get; set; }
+        private int xCoordinate { get; set; }
+        private int yCoordinate {  get; set; }
 
-        public TerrainCoordinates(Terrain Terrain, int XCoordinate, int YCoordinate)
+        public TerrainCoordinates(Terrain terrain, int xCoordinate, int yCoordinate)
         {
-            this.Terrain = Terrain;
-            this.XCoordinate = XCoordinate;
-            this.YCoordinate = YCoordinate;
+            this.terrain = terrain;
+            this.xCoordinate = xCoordinate;
+            this.yCoordinate = yCoordinate;
         }
 
-        public void SetCoordinates(int X, int Y)
+        public void setCoordinates(int x, int y)
         {
-            XCoordinate = X;
-            YCoordinate = Y;
+            this.xCoordinate = x;
+            this.yCoordinate = y;
         }
 
-        public List<int> GetCoordinates()
+        public List<int> getCoordinates()
         {
-            return new List<int> { XCoordinate, YCoordinate };
+            return new List<int> { xCoordinate, yCoordinate };
         }
 
         public string ToJSON()
         {
-            string Terrain = this.Terrain.ToJSON();
-            List<string> list = new() { Terrain, this.XCoordinate.ToString(), this.YCoordinate.ToString() };
+            string terrain = this.terrain.ToJSON();
+            List<string> list = new() { terrain, this.xCoordinate.ToString(), this.yCoordinate.ToString() };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -42,16 +42,16 @@ namespace DesignPatterns
         public static TerrainCoordinates FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            Terrain Terrain = Terrain.FromJSON(list[0]);
-            int XCoordinate = Convert.ToInt32(list[1]);
-            int YCoordinate = Convert.ToInt32(list[2]);
-            TerrainCoordinates TerrainCoordinates = new(Terrain, XCoordinate, YCoordinate);
-            return TerrainCoordinates;
+            Terrain terrain = Terrain.FromJSON(list[0]);
+            int xCoordinate = Convert.ToInt32(list[1]);
+            int yCoordinate = Convert.ToInt32(list[2]);
+            TerrainCoordinates terrainCoordinates = new(terrain, xCoordinate, yCoordinate);
+            return terrainCoordinates;
         }
 
         public override string ToString()
         {
-            return Terrain.ToString() + ", " + XCoordinate + ", " + YCoordinate;
+            return terrain.ToString() + ", " + xCoordinate + ", " + yCoordinate;
         }
     }
 }

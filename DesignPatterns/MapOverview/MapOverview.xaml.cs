@@ -9,8 +9,6 @@ namespace DesignPatterns.MapOverview
         {
             this.Maps = Maps;
             InitializeComponent();
-
-            collectionViewMap.ItemsSource = this.Maps;
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    internal class Beast: Unit
+    internal class Beast: AbstractUnit, Unit
     {
-        public string Name {  get; set; }
-        public int Value { get; set; }
-
-        public Beast(string Name, int Value)
-        {
-            this.Name = Name;
-            this.Value = Value;
-        }
+        public Beast(string name, int value) : base(name, value) {}
 
         public string ToJSON()
         {
@@ -24,7 +18,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return "(" + Name + "," + Value.ToString() + ")";
+            return "(" + this.name + "," + this.value.ToString() + ")";
         }
     }
 }

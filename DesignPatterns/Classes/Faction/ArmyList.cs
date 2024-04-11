@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -9,39 +10,77 @@ namespace DesignPatterns
 {
     internal class ArmyList
     {
-        public string ArmyName { get; set; }
-        public string PlayerName { get; set; }
-        public List<Unit> Units { get; set; }
-        
-        public ArmyList(string ArmyName, string PlayerName)
+        private string _armyName;
+        private string _playerName;
+        private List<AbstractUnit> units { get; set; }
+
+        public ArmyList(string armyName, string playerName)
         {
-            this.ArmyName = ArmyName;
-            this.PlayerName = PlayerName;
-            Units = new();
+            this._armyName = armyName;
+            this._playerName = playerName;
+            this.units = new();
         }
 
-        public ArmyList(string ArmyName, string PlayerName, List<Unit> Units)
+        public ArmyList(string armyName, string playerName, List<AbstractUnit> units)
         {
-            this.ArmyName = ArmyName;
-            this.PlayerName = PlayerName;
-            this.Units = Units;
+            this._armyName = armyName;
+            this._playerName = playerName;
+            this.units = units;
         }
 
-        public void AddUnit(Unit Unit)
+        public string armyName
         {
-            Units.Add(Unit);
+            get { return _armyName; }
+            set { _armyName = value; }
         }
 
-        public Unit GetUnitById(int Id)
+        public string playerName
         {
-            return Units[Id];
+            get { return _playerName; }
+            set { _playerName = value; }
+        }
+
+        public void addUnit(AbstractUnit unit)
+        {
+            units.Add(unit);
+        }
+
+        public AbstractUnit getUnitById(int id)
+        {
+            if (id >= 0 && id < units.Count)
+            {
+                return units[id];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Invalid unit ID.");
+            }
+        }
+
+        public int getArmyValue()
+        {
+            int value = 0;
+
+            foreach (AbstractUnit unit in units)
+            {
+                if (unit is AbstractUnit abstractUnit)
+                {
+                    value += unit.Value;
+                }
+            }
+            return value;
+        }
+
+        public int getArmyCount()
+        {
+            return units.Count;
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.Units);
+            string JU = JSONObject.ListToJSON(this.units);
 
-            List<string> list = new() { this.ArmyName, this.PlayerName, JU };
+            List<string> list = new() { this.armyName, this.playerName, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -50,17 +89,17 @@ namespace DesignPatterns
         public static ArmyList FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            string ArmyName = list[0];
-            string PlayerName = list[1];
-            List<Unit> Units = JSONObject.JSONToList<Unit>(list[2]);
-            ArmyList ArmyList = new(ArmyName, PlayerName, Units);
+            string armyName = list[0];
+            string playerName = list[1];
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[2]);
+            ArmyList armyList = new(armyName, playerName, units);
 
-            return ArmyList;
+            return armyList;
         }
 
         public override string ToString()
         {
-            return ArmyName + ", " + PlayerName + ", " + Units.Count;
+            return this.armyName + ", " + this.playerName + ", " + this.units.Count;
         }
     }
 }

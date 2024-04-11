@@ -9,9 +9,6 @@ namespace DesignPatterns
 {
     internal interface Unit
     {
-        public string Name { get; set; }
-        public int Value { get; set; }
-
         string ToJSON();
 
         public static Unit FromJSON(string jsonString)

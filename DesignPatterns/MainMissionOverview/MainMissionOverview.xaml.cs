@@ -5,13 +5,10 @@ namespace DesignPatterns.MainMissionOverview
 
     public partial class MainMissionOverview : ContentPage
     {
-        ArrayList PrimaryMissions = new ArrayList();
-        public MainMissionOverview(ArrayList PrimaryMissions) 
+        public MainMissionOverview() 
         {
             this.PrimaryMissions = PrimaryMissions;
             InitializeComponent();
-
-            collectionViewPrimaryMissions.ItemsSource = PrimaryMissions;
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)

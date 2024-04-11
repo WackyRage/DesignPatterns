@@ -12,8 +12,8 @@ namespace DesignPatterns
     internal class JSONObject
     {
         static readonly JsonSerializerOptions O = new() { IncludeFields = true };
-        public string ObjectType { get; set; }
-        public object Object { get; set; }
+        private string ObjectType { get; set; }
+        private object Object { get; set; }
 
         [JsonConstructor]
         public JSONObject(object Object)

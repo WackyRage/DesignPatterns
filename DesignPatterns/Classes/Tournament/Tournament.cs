@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -9,79 +10,151 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        public List<Mission> Missions { get; set; }
-        public Map Map { get; set; }
-        public GameType GameType { get; set; }
-        public List<Log> Logs { get; set; }
-        public List<ArmyList> Armies { get; set; }
+        private List<Mission> missions { get; set; }
+        private Map map { get; set; }
+        private GameType gameType { get; set; }
+        private List<Log> logs { get; set; }
+        private List<ArmyList> armies { get; set; }
+        private int armyLimit { get; set; }
+        private string name { get; set; }
 
-        public Tournament(Map Map, GameType GameType)
+        public Tournament(Map map, GameType gameType, string name, int armyLimit)
         {
-            this.Map = Map;
-            this.GameType = GameType;
-            this.Missions = new();
-            this.Logs = new();
-            this.Armies = new();
+            this.map = map;
+            this.gameType = gameType;
+            this.name = name;
+            this.armyLimit = armyLimit;
+            this.missions = new();
+            this.logs = new();
+            this.armies = new();
         }
 
-        public Tournament(Map Map, GameType GameType, List<Mission> Missions, List<Log> Logs, List<ArmyList> Armies)
+        public Tournament(Map map, GameType gameType, string name, int armyLimit, List<Mission> missions, List<Log> logs, List<ArmyList> armies)
         {
-            this.Map = Map;
-            this.GameType = GameType;
-            this.Missions = Missions;
-            this.Logs = Logs;
-            this.Armies = Armies;
+            this.map = map;
+            this.gameType = gameType;
+            this.name = name;
+            this.armyLimit = armyLimit;
+            this.missions = missions;
+            this.logs = logs;
+            this.armies = armies;
         }
 
-        public void AddMission(Mission M)
+        public void addMission(Mission m)
         {
-            Missions.Add(M);
+            this.missions.Add(m);
         }
 
-        public void AddLog(Log L)
+        public void addLog(Log l)
         {
-            Logs.Add(L);
+            this.logs.Add(l);
         }
 
-        public void AddArmy(ArmyList A)
+        public void addArmy(ArmyList a)
         {
-            Armies.Add(A);
+            if (a.getArmyValue() <= this.armyLimit)
+            {
+                this.armies.Add(a);
+            }
+            else
+            {
+                throw new InvalidOperationException("Adding the army exceeds the tournament's army limit.");
+            }
+        }
+        public void addNewArmy(String armyName, String playerName)
+        {
+            try
+            {
+                this.armies.Add(new ArmyList(armyName, playerName));
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException($"An error occurred while adding a new army: {e.Message}");
+
+            }
         }
 
-        public Mission GetMissionById(int Id)
+        public void addUnitToArmy(string playerName, string armyName, AbstractUnit unit)
         {
-            return Missions[Id];
+            foreach (var army in this.armies)
+            {
+                if (army.armyName == armyName && army.playerName == playerName)
+                {
+                    int toBeValue = army.getArmyValue() + unit.Value;
+                    if (toBeValue <= this.armyLimit)
+                    {
+                        army.addUnit(unit);
+                        return;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Adding the unit exceeds the tournament's army limit.");
+                    }
+                }
+            }
+
+            throw new ArgumentException("Army not found for the specified player and army name.");
         }
 
-        public Log GetLogById(int Id)
+        public Mission getMissionById(int id)
         {
-            return Logs[Id];
+            return this.missions[id];
         }
 
-        public ArmyList GetArmyById(int Id)
+        public Log getLogById(int id)
         {
-            return Armies[Id];
+            return this.logs[id];
+        }
+
+        public ArmyList getArmyById(int id)
+        {
+            return this.armies[id];
+        }
+
+        public ArmyList getArmyByPlayer(string player)
+        {
+            foreach (var army in this.armies)
+            {
+                if (army.playerName == player)
+                {
+                    return army;
+                }
+            }
+
+            throw new Exception("Army not found for the specified player.");
+        }
+
+        public ArmyList getArmyByName(string name)
+        {
+            foreach (var army in this.armies)
+            {
+                if (army.armyName == name)
+                {
+                    return army;
+                }
+            }
+
+            throw new Exception("Army not found for the specified name.");
         }
 
         public string ToJSON()
         {
-            List<string> Missions = new();
-            foreach(Mission Mission in this.Missions)
+            List<string> missions = new();
+            foreach (Mission mission in this.missions)
             {
-                Missions.Add(Mission.ToJSON());
+                missions.Add(mission.ToJSON());
             }
-            List<string> Logs = new();
-            foreach (Log Log in this.Logs)
+            List<string> logs = new();
+            foreach (Log log in this.logs)
             {
-                Logs.Add(Log.ToJSON());
+                logs.Add(log.ToJSON());
             }
-            List<string> Armies = new();
-            foreach(ArmyList Army in this.Armies)
+            List<string> armies = new();
+            foreach(ArmyList army in this.armies)
             {
-                Armies.Add(Army.ToJSON());
+                armies.Add(army.ToJSON());
             }
-
-            List<string> list = new() { this.Map.ToJSON(), this.GameType.ToJSON(), JSONObject.ListToJSON(Missions), JSONObject.ListToJSON(Logs), JSONObject.ListToJSON(Armies) };
+            List<string> list = new() { this.map.ToJSON(), this.gameType.ToJSON(), JSONObject.ListToJSON(missions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -89,37 +162,37 @@ namespace DesignPatterns
         public static Tournament FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            Map Map = Map.FromJSON(list[0]);
-            GameType GameType = GameType.FromJSON(list[1]);
+            Map map = Map.FromJSON(list[0]);
+            GameType gameType = GameType.FromJSON(list[1]);
 
-            List<string> Temp = JSONObject.JSONToList<string>(list[2]);
-            List<Mission> Missions = new();
-            foreach (string M in Temp)
+            List<string> temp = JSONObject.JSONToList<string>(list[2]);
+            List<Mission> missions = new();
+            foreach (string m in temp)
             {
-                Missions.Add(Mission.FromJSON(M));
+                missions.Add(Mission.FromJSON(m));
             }
 
-            Temp = JSONObject.JSONToList<string>(list[3]);
-            List<Log> Logs = new();
-            foreach (string L in Temp)
+            temp = JSONObject.JSONToList<string>(list[3]);
+            List<Log> logs = new();
+            foreach (string l in temp)
             {
-                Logs.Add(Log.FromJSON(L));
+                logs.Add(Log.FromJSON(l));
             }
 
-            Temp = JSONObject.JSONToList<string>(list[4]);
-            List<ArmyList> Armies = new();
-            foreach (string A in Temp)
+            temp = JSONObject.JSONToList<string>(list[4]);
+            List<ArmyList> armies = new();
+            foreach (string a in temp)
             {
-                Armies.Add(ArmyList.FromJSON(A));
+                armies.Add(ArmyList.FromJSON(a));
             }
 
-            Tournament Tournament = new(Map, GameType, Missions, Logs, Armies);
+            Tournament Tournament = new(map, gameType, missions, logs, armies);
             return Tournament;
         }
 
         public override string ToString()
         {
-            return this.Map.ToString() + ", " + this.GameType.ToString() + ", " + this.Missions.Count + ", " + this.Logs.Count + ", " + this.Armies.Count;
+            return this.map.ToString() + ", " + this.gameType.ToString() + ", " + this.missions.Count + ", " + this.logs.Count + ", " + this.armies.Count;
         }
     }
 }
