@@ -109,7 +109,7 @@ namespace DesignPatterns
             {
                 LS.Add(T.ToJSON());
             }
-            JSONObject.WriteJSONToFile(LS, "Tournament.json");
+            JSONObject.WriteJSONToFile(LS, "Tournaments.json");
         }
     }
 }

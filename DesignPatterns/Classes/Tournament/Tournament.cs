@@ -10,31 +10,41 @@ namespace DesignPatterns
 {
     internal class Tournament
     {
-        private List<Mission> missions;
+        private string _name;
         private Map map;
         private GameType gameType;
+        private int _armyLimit;
+        private List<Mission> missions;
         private List<Log> logs;
         private List<ArmyList> armies;
-        private int armyLimit;
-        private string name;
-
-        public Tournament(Map map, GameType gameType, string name, int armyLimit)
+        public int armyLimit
         {
+            get => _armyLimit;
+            set => _armyLimit = value;
+        }
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        public Tournament(string name, Map map, GameType gameType, int armyLimit)
+        {
+            this._name = name;
             this.map = map;
             this.gameType = gameType;
-            this.name = name;
-            this.armyLimit = armyLimit;
+            this._armyLimit = armyLimit;
             this.missions = new();
             this.logs = new();
             this.armies = new();
         }
 
-        public Tournament(Map map, GameType gameType, string name, int armyLimit, List<Mission> missions, List<Log> logs, List<ArmyList> armies)
+        public Tournament(string name, Map map, GameType gameType, int armyLimit, List<Mission> missions, List<Log> logs, List<ArmyList> armies)
         {
+            this._name = name;
             this.map = map;
             this.gameType = gameType;
-            this.name = name;
-            this.armyLimit = armyLimit;
+            this._armyLimit = armyLimit;
             this.missions = missions;
             this.logs = logs;
             this.armies = armies;
@@ -154,7 +164,7 @@ namespace DesignPatterns
             {
                 armies.Add(army.ToJSON());
             }
-            List<string> list = new() { this.map.ToJSON(), this.gameType.ToJSON(), JSONObject.ListToJSON(missions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
+            List<string> list = new() { this._name, this.map.ToJSON(), this.gameType.ToJSON(), this._armyLimit.ToString(), JSONObject.ListToJSON(missions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -162,37 +172,39 @@ namespace DesignPatterns
         public static Tournament FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
-            Map map = Map.FromJSON(list[0]);
-            GameType gameType = GameType.FromJSON(list[1]);
+            string name = list[0];
+            Map map = Map.FromJSON(list[1]);
+            GameType gameType = GameType.FromJSON(list[2]);
+            int armyLimit = Int32.Parse(list[3]);
 
-            List<string> temp = JSONObject.JSONToList<string>(list[2]);
+            List<string> temp = JSONObject.JSONToList<string>(list[4]);
             List<Mission> missions = new();
             foreach (string m in temp)
             {
                 missions.Add(Mission.FromJSON(m));
             }
 
-            temp = JSONObject.JSONToList<string>(list[3]);
+            temp = JSONObject.JSONToList<string>(list[5]);
             List<Log> logs = new();
             foreach (string l in temp)
             {
                 logs.Add(Log.FromJSON(l));
             }
 
-            temp = JSONObject.JSONToList<string>(list[4]);
+            temp = JSONObject.JSONToList<string>(list[6]);
             List<ArmyList> armies = new();
             foreach (string a in temp)
             {
                 armies.Add(ArmyList.FromJSON(a));
             }
 
-            Tournament Tournament = new(map, gameType, "Name", 1, missions, logs, armies);
+            Tournament Tournament = new(name, map, gameType, armyLimit, missions, logs, armies);
             return Tournament;
         }
 
         public override string ToString()
         {
-            return this.map.ToString() + ", " + this.gameType.ToString() + ", " + this.missions.Count + ", " + this.logs.Count + ", " + this.armies.Count;
+            return this._name + ", " + this.map.ToString() + ", " + this.gameType.ToString() + ", " + this._armyLimit + ", " + this.missions.Count + ", " + this.logs.Count + ", " + this.armies.Count;
         }
     }
 }
