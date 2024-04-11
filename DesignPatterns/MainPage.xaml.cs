@@ -90,11 +90,11 @@ namespace DesignPatterns
                 foreach (String item in jsonList)
                 {
                     Mission temp = Mission.FromJSON(item);
-                    if (temp.MissionType == 1) 
+                    if (temp.missionType == 1) 
                     {
                         PrimaryMissions.Add(temp);
                     }
-                    else if (temp.MissionType == 2)
+                    else if (temp.missionType == 2)
                     {
                         SecondaryMissions.Add(temp);
                     }
