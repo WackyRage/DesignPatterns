@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class containing information of a terrain and coordinates
     internal class TerrainCoordinates
     {
         private Terrain terrain;
@@ -20,14 +21,17 @@ namespace DesignPatterns
             this.yCoordinate = yCoordinate;
         }
 
+        // Method to set X and Y coordinats
         public void setCoordinates(int x, int y)
         {
             this.xCoordinate = x;
             this.yCoordinate = y;
         }
 
+        // Method to get coordinates as a list
         public List<int> getCoordinates()
         {
+            // Return with index 0 as X and index 1 as Y
             return new List<int> { xCoordinate, yCoordinate };
         }
 

@@ -6,26 +6,40 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class for GameType, containing all Factions.
     internal class GameType
     {
         private List<Faction> factions;
         private string name;
 
+        // Constructor for GameType without pre-defined factions.
         public GameType(string name) 
         {
             this.name = name;
             this.factions = new();
         }
 
+        // Constructor for GameType with pre-defined factions.
         public GameType(string name, List<Faction> factions) 
         {
             this.name = name;
             this.factions = factions;
         }
 
-
+        // Method of adding a faction.
         public void addFaction(Faction faction)
         {
+            foreach (Faction existingFaction in factions)
+            {
+                // Check if loped faction has the same name.
+                if (existingFaction.name == faction.name)
+                {
+                    // If a faction name already exists, throw an exception.
+                    throw new ArgumentException($"Faction with name '{faction.name}' already exists.");
+                }
+            }
+
+            // If no faction with the same name exists, add the new faction.
             this.factions.Add(faction);
         }
 
