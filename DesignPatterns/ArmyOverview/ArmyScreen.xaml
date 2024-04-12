@@ -8,7 +8,7 @@
           BackgroundColor="Grey">
         <Picker x:Name="unitPicker" Title="Select a Unit to add to your army" 
                 Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
-        <Button Text="Add New Army to Tournament"
+        <Button Text="Add New Unit to Army"
                 Grid.Row="0"
                 Grid.Column="3"
                 BackgroundColor="OrangeRed"
