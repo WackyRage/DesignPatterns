@@ -1,5 +1,4 @@
 ﻿using DesignPatterns.Classes.Faction;
-using MetalPerformanceShadersGraph;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
