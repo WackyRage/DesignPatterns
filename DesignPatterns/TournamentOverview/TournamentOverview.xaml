@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DesignPatterns.TournamentOverview.TournamentOverview">
-    <Grid RowDefinitions="75, 75, 75, *"
+    <Grid RowDefinitions="75, 75, 75, 125, *"
           ColumnDefinitions=".25*, .50*, .25*"
           RowSpacing="10"
           ColumnSpacing="10"
@@ -38,17 +38,14 @@
                 Clicked="Button_Clicked_NewTournament"
                 BackgroundColor="OrangeRed"/>
 
-        <CollectionView x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="0, 5">
-                        <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding name}"
-                                   FontSize="24"/>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Picker x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20" 
+                Title="Select a Tournament" ItemDisplayBinding="{Binding name}"/>
+
+        <Button Text="Open Tournament Details"
+                Grid.Row="3"
+                Grid.Column="2"
+                Clicked="Button_Clicked_SelectedTournament"
+                BackgroundColor="MediumPurple"/>
+
     </Grid>
 </ContentPage>
