@@ -7,7 +7,7 @@
           ColumnSpacing="10"
           BackgroundColor="Grey">
         <Picker x:Name="unitPicker" Title="Select a Unit to add to your army" 
-                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding armyName}"/>
+                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
         <Button Text="Add New Army to Tournament"
                 Grid.Row="0"
                 Grid.Column="3"
@@ -20,6 +20,10 @@
                 BackgroundColor="Orange"
                 Clicked="EditArmyNameOnClick"/>
 
+        <Label x:Name="armyNameLabel"
+               Grid.Row="1"
+               Grid.Column="0"/>
+
         <Entry x:Name="armyNameEdit"
                Placeholder="Enter New Army Name"
                Grid.Row="1"
@@ -31,6 +35,10 @@
                 BackgroundColor="Orange"
                 Clicked="editArmyOwnerOnClick"/>
 
+        <Label x:Name="armyOwnerLabel"
+               Grid.Row="2"
+               Grid.Column="0"/>
+        
         <Entry x:Name="armyOwnerEdit"
                Placeholder="Enter New Army Owner Name"
                Grid.Row="2"
@@ -47,7 +55,7 @@
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding name}"
+                            <Label Text="{Binding Name}"
                                    FontSize="24"/>
                         </Frame>
                     </Grid>

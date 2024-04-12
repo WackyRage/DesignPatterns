@@ -130,7 +130,7 @@ namespace DesignPatterns
             try
             {
                 // Create new army object and add to armies list.
-                ArmyList army = new ArmyList(armyName, playerName)
+                ArmyList army = new ArmyList(armyName, playerName);
                 this._armies.Add(army);
                 army.subscribe(this);
             }
