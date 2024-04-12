@@ -1,0 +1,58 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DesignPatterns.ArmyOverview.ArmyScreen">
+    <Grid RowDefinitions="65, 65, 65, *"
+          ColumnDefinitions=".25* , .45*, .30*"
+          RowSpacing="10"
+          ColumnSpacing="10"
+          BackgroundColor="Grey">
+        <Picker x:Name="unitPicker" Title="Select a Unit to add to your army" 
+                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding armyName}"/>
+        <Button Text="Add New Army to Tournament"
+                Grid.Row="0"
+                Grid.Column="3"
+                BackgroundColor="OrangeRed"
+                Clicked="addUnitOnClick"/>
+
+        <Button Text="Edit Army Name"
+                Grid.Row="1"
+                Grid.Column="3"
+                BackgroundColor="Orange"
+                Clicked="EditArmyNameOnClick"/>
+
+        <Entry x:Name="armyNameEdit"
+               Placeholder="Enter New Army Name"
+               Grid.Row="1"
+               Grid.Column="1"/>
+        
+        <Button Text="Edit Army Owner"
+                Grid.Row="2"
+                Grid.Column="3"
+                BackgroundColor="Orange"
+                Clicked="editArmyOwnerOnClick"/>
+
+        <Entry x:Name="armyOwnerEdit"
+               Placeholder="Enter New Army Owner Name"
+               Grid.Row="2"
+               Grid.Column="1"/>
+        
+        <Button Text="Back"
+                Grid.Row="0"
+                Grid.Column="0"
+                Clicked="Button_Clicked_Back"
+                BackgroundColor="DarkRed"/>
+
+        <CollectionView x:Name="collectionViewLogs" Grid.Row="3" Grid.Column="1" Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0, 5">
+                        <Frame BackgroundColor="LightGrey">
+                            <Label Text="{Binding name}"
+                                   FontSize="24"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

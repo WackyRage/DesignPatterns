@@ -3,8 +3,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DesignPatterns.TournamentOverview.TournamentScreen.TournamentScreen">
-    <Grid RowDefinitions="50, 50, 50, 50, 50, 50, 50, *"
-          ColumnDefinitions=".125*, .125* , .50*, .25*"
+    <Grid RowDefinitions="50, 65, 65, 65, 65, 65, *"
+          ColumnDefinitions=".125*, .125* , .45*, .30*"
           RowSpacing="10"
           ColumnSpacing="10"
           BackgroundColor="Grey">
@@ -24,101 +24,99 @@
                Grid.Row="4"
                Grid.Column="0"/>
 
-        <Label Text="{Binding Name}"
+        <Label x:Name="tournamentName"
                Grid.Row="0"
                Grid.Column="1"/>
-        <Label Text="{Binding Points}"
+        <Label x:Name="tournamentPoints"
                Grid.Row="1"
                Grid.Column="1"/>
-        <Label Text="{Binding Primary}"
+        <Label x:Name="tournamentPrimary"
                Grid.Row="2"
                Grid.Column="1"/>
-        <Label Text="{Binding Secundary}"
+        <Label x:Name="tournamentSecondary"
                Grid.Row="3"
                Grid.Column="1"/>
-        <Label Text="{Binding Map}"
+        <Label x:Name="tournamentMap"
                Grid.Row="4"
                Grid.Column="1"/>
 
-        <Entry Placeholder="Enter New Tournament Name"
+        <Entry x:Name="tournamentNameEntry"
+               Placeholder="Enter New Tournament Name"
                Grid.Row="0"
                Grid.Column="2"/>
-        <Entry Placeholder="Enter New Point Value"
-               Grid.Row="1"
-               Grid.Column="2"/>
-        <Entry Placeholder="Enter New Primany Mission"
-               Grid.Row="2"
-               Grid.Column="2"/>
-        <Entry Placeholder="Enter New Secundary Mission"
-               Grid.Row="3"
-               Grid.Column="2"/>
-        <Entry Placeholder="Enter New Map"
-               Grid.Row="4"
-               Grid.Column="2"/>
+        <Picker x:Name="tournamentPointsEntry" Title="Enter New Point Value" 
+                Grid.Row="1" Grid.Column="2">
+            <Picker.Items>
+                <x:String>1000</x:String>
+                <x:String>2000</x:String>
+            </Picker.Items>
+        </Picker>
+        <Picker x:Name="tournamentPrimaryEntry" Title="Select a Primary Mission" 
+                Grid.Row="2" Grid.Column="2" ItemDisplayBinding="{Binding name}"/>
+        <Picker x:Name="tournamentSecondaryEntry" Title="Select a Secondary Mission" 
+                Grid.Row="3" Grid.Column="2" ItemDisplayBinding="{Binding name}"/>
+        <Picker x:Name="tournamentMapEntry" Title="Select a Map" 
+                Grid.Row="4" Grid.Column="2" ItemDisplayBinding="{Binding name}"/>
 
         <Button Text="Edit Tournament Name"
                 Grid.Row="0"
                 Grid.Column="3"
-                BackgroundColor="Orange"/>
+                BackgroundColor="Orange"
+                Clicked="nameClicked"/>
         <Button Text="Edit Tournament Point Value"
                 Grid.Row="1"
                 Grid.Column="3"
-                BackgroundColor="Orange"/>
+                BackgroundColor="Orange"
+                Clicked="pointValueClicked"/>
         <Button Text="Edit Tournament Primary Mission"
                 Grid.Row="2"
                 Grid.Column="3"
-                BackgroundColor="Orange"/>
+                BackgroundColor="Orange"
+                Clicked="primaryClicked"/>
         <Button Text="Edit Tournament Secundary Mission"
                 Grid.Row="3"
                 Grid.Column="3"
-                BackgroundColor="Orange"/>
+                BackgroundColor="Orange"
+                Clicked="secondaryClicked"/>
         <Button Text="Edit Tournament Map"
                 Grid.Row="4"
                 Grid.Column="3"
-                BackgroundColor="Orange"/>
+                BackgroundColor="Orange"
+                Clicked="mapClicked"/>
 
         <Button Text="Back"
-                Grid.Row="6"
-                Grid.Column="3"
+                Grid.Row="5"
+                Grid.Column="0"
                 Clicked="Button_Clicked_Back"
                 BackgroundColor="DarkRed"/>
 
-        <Label Text="Add New Player:"
-               Grid.Row="5"
-               Grid.Column="1"/>
-        <Entry Placeholder="Enter New Player Name"
-               Grid.Row="5"
-               Grid.Column="2"/>
-        <Button Text="Add New Player"
+        <Picker x:Name="armyPicker" Title="Select an Army to add" 
+                Grid.Row="5" Grid.Column="2" ItemDisplayBinding="{Binding armyName}"/>
+        <Button Text="Add New Army to Tournament"
                 Grid.Row="5"
                 Grid.Column="3"
-                BackgroundColor="OrangeRed"/>
-
-        <!-- 
-        https://stackoverflow.com/questions/76029311/how-to-add-on-click-event-on-entire-datatemplate-inside-maui-collection-view 
-        https://www.youtube.com/watch?v=l5qJRYwhyOY&list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY&index=4 
-        -->
+                BackgroundColor="OrangeRed"
+                Clicked="addArmyOnClick"/>
+        
         <CollectionView x:Name="collectionViewTournament" Grid.Row="7" Grid.Column="2" Margin="20">
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Player One + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                    <x:String>Player Two + Player Faction + Player Points</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding .}"
+                            <Label Text="{Binding armyName}"
                                    FontSize="24"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <CollectionView x:Name="collectionViewLogs" Grid.Row="7" Grid.Column="3" Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0, 5">
+                        <Frame BackgroundColor="LightGrey">
+                            <Label Text="{Binding message}"
+                           FontSize="24"/>
                         </Frame>
                     </Grid>
                 </DataTemplate>

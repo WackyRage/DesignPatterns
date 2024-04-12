@@ -39,5 +39,10 @@
                 Grid.Column="2"
                 Clicked="Button_Clicked_Map"
                 BackgroundColor="LightSteelBlue"/>
+        <Button Text="Armies Overview"
+                Grid.Row="3"
+                Grid.Column="1"
+                Clicked="Button_Clicked_Armies"
+                BackgroundColor="DarkCyan"/>
     </Grid>
 </ContentPage>
