@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class Tournament, contains all information of a tournament, including collections
     internal class Tournament
     {
         private string _name;
@@ -17,42 +18,8 @@ namespace DesignPatterns
         private List<Mission> _missions;
         private List<Log> _logs;
         private List<ArmyList> _armies;
-        public string name
-        {
-            get => _name;
-            set => _name = value;
-        }
-        public Map map
-        {
-            get => _map;
-            set => _map = value;
-        }
-        public GameType gameType
-        {
-            get => _gameType;
-            set => _gameType = value;
-        }
-        public int armyLimit
-        {
-            get => _armyLimit;
-            set => _armyLimit = value;
-        }
-        public List<Mission> missions
-        {
-            get => _missions; 
-            set => _missions = value;
-        }
-        public List<Log> logs
-        {
-            get => _logs;
-            set => _logs = value;
-        }
-        public List<ArmyList> armies
-        {
-            get => _armies;
-            set => _armies = value;
-        }
 
+        // Constructor for Tournament without pre-defined missions, logs and armies.
         public Tournament(string name, Map map, GameType gameType, int armyLimit)
         {
             this._name = name;
@@ -64,6 +31,7 @@ namespace DesignPatterns
             this._armies = new();
         }
 
+        // Constructor for Tournament with pre-defined missions, logs and armies.
         public Tournament(string name, Map map, GameType gameType, int armyLimit, List<Mission> missions, List<Log> logs, List<ArmyList> armies)
         {
             this._name = name;
@@ -75,18 +43,71 @@ namespace DesignPatterns
             this._armies = armies;
         }
 
+        // Method for getting and setting the name of the Tournament.
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        // Method for getting and setting the map of the Tournament.
+        public Map map
+        {
+            get => _map;
+            set => _map = value;
+        }
+
+        // Method for getting and setting the gameType of the Tournament.
+        public GameType gameType
+        {
+            get => _gameType;
+            set => _gameType = value;
+        }
+
+        // Method for getting and setting the armyLimit of the Tournament.
+        public int armyLimit
+        {
+            get => _armyLimit;
+            set => _armyLimit = value;
+        }
+
+        // Method for getting and setting the missions of the Tournament.
+        public List<Mission> missions
+        {
+            get => _missions;
+            set => _missions = value;
+        }
+
+        // Method for getting and setting the logs of the Tournament.
+        public List<Log> logs
+        {
+            get => _logs;
+            set => _logs = value;
+        }
+
+        // Method for getting and setting the armies of the Tournament.
+        public List<ArmyList> armies
+        {
+            get => _armies;
+            set => _armies = value;
+        }
+
+        // Method to add a new mission.
         public void addMission(Mission m)
         {
             this._missions.Add(m);
         }
 
+        // Method to add new log.
         public void addLog(Log l)
         {
             this._logs.Add(l);
         }
 
+        // Method to add new army.
         public void addArmy(ArmyList a)
         {
+            // Check to see if army exceeds tournement limit.
             if (a.getArmyValue() <= this.armyLimit)
             {
                 this._armies.Add(a);
@@ -96,10 +117,13 @@ namespace DesignPatterns
                 throw new InvalidOperationException("Adding the army exceeds the tournament's army limit.");
             }
         }
+
+        // Method to create a new army.
         public void addNewArmy(String armyName, String playerName)
         {
             try
             {
+                // Create new army object and add to armies list.
                 this._armies.Add(new ArmyList(armyName, playerName));
             }
             catch (Exception e)
@@ -109,13 +133,18 @@ namespace DesignPatterns
             }
         }
 
+        // Method to add unit to a army.
         public void addUnitToArmy(string playerName, string armyName, AbstractUnit unit)
         {
+            // Loop through armies, to select right army.
             foreach (var army in this._armies)
             {
+                // Check is army and player names match.
                 if (army.armyName == armyName && army.playerName == playerName)
                 {
+                    // Calculate new possible army value.
                     int toBeValue = army.getArmyValue() + unit.Value;
+                    // Check if toBeValue is lower than limit.
                     if (toBeValue <= this.armyLimit)
                     {
                         army.addUnit(unit);
@@ -131,23 +160,28 @@ namespace DesignPatterns
             throw new ArgumentException("Army not found for the specified player and army name.");
         }
 
+        // Method to select mission bij index.
         public Mission getMissionById(int id)
         {
             return this._missions[id];
         }
 
+        // Method to select log bij index.
         public Log getLogById(int id)
         {
             return this._logs[id];
         }
 
+        // Method to select army bij index.
         public ArmyList getArmyById(int id)
         {
             return this._armies[id];
         }
 
+        // Method to select mission bij player.
         public ArmyList getArmyByPlayer(string player)
         {
+            // Loop to find army.
             foreach (var army in this._armies)
             {
                 if (army.playerName == player)
@@ -159,8 +193,10 @@ namespace DesignPatterns
             throw new Exception("Army not found for the specified player.");
         }
 
+        // Method to get army bij name.
         public ArmyList getArmyByName(string name)
         {
+            // Loop to find army.
             foreach (var army in this._armies)
             {
                 if (army.armyName == name)

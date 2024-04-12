@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class log, to record events.
     internal class Log
     {
         private string message;
@@ -19,6 +20,7 @@ namespace DesignPatterns
             this.resolved = resolved;
         }
 
+        // chack booloan to opposite value
         public void changeResolved()
         {
             if (this.resolved)
