@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class for army list, containing all army selected units.
     internal class ArmyList
     {
         private string _armyName;
         private string _playerName;
         private List<AbstractUnit> units { get; set; }
 
+        // Constructor for ArmyList without pre-defined army.
         public ArmyList(string armyName, string playerName)
         {
             this._armyName = armyName;
@@ -21,6 +23,7 @@ namespace DesignPatterns
             this.units = new();
         }
 
+        // Constructor for ArmyList with pre-defined army.
         public ArmyList(string armyName, string playerName, List<AbstractUnit> units)
         {
             this._armyName = armyName;
@@ -28,12 +31,14 @@ namespace DesignPatterns
             this.units = units;
         }
 
+        // Method for getting and setting the armyName.
         public string armyName
         {
             get { return _armyName; }
             set { _armyName = value; }
         }
 
+        // Method for getting and setting the playerName.
         public string playerName
         {
             get { return _playerName; }
@@ -45,8 +50,10 @@ namespace DesignPatterns
             units.Add(unit);
         }
 
+        // Method for retrieving a unit from the army by its index.
         public AbstractUnit getUnitById(int id)
         {
+            // Check if unit is in List
             if (id >= 0 && id < units.Count)
             {
                 return units[id];
@@ -57,6 +64,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method for calculating the total value of the army.
         public int getArmyValue()
         {
             int value = 0;
@@ -71,6 +79,7 @@ namespace DesignPatterns
             return value;
         }
 
+        // Method to return total amount of unit in the army.
         public int getArmyCount()
         {
             return units.Count;

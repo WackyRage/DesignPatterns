@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+
+    // Class representing Infantry based on AbstractUnit and Unit
     internal class Infantry : AbstractUnit, Unit
     {
         public Infantry(string name, int value) : base(name, value) {}

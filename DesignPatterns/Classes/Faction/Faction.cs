@@ -7,21 +7,14 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class for Faction, containing all unit concepts.
     internal class Faction
     {
         private string _name;
         private List<AbstractUnit> _units;
         private UnitFactory unitFactory;
-        public string name
-        {
-            get => _name; 
-            set => _name = value;
-        }
-        public List<AbstractUnit> units
-        {
-            get => _units;
-            set => _units = value;
-        }
+
+        // Constructor for Faction without pre-defined army.
         public Faction(string name)
         {
             this._name = name;
@@ -29,6 +22,7 @@ namespace DesignPatterns
             _units = new();
         }
 
+        // Constructor for Faction with pre-defined army.
         public Faction(string name, List<AbstractUnit> units)
         {
             this._name = name;
@@ -36,14 +30,32 @@ namespace DesignPatterns
             this._units = units;
         }
 
+        // Method for getting and setting the faction name.
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        // Method for getting and setting the units list.
+        public List<AbstractUnit> units
+        {
+            get => _units;
+            set => _units = value;
+        }
+
+        // Method for adding pre-defined unit
         public void addUnit(AbstractUnit unit)
         {
             this._units.Add(unit);
         }
 
+        // Method to create unit based on unput
         public void addUnit(string type, string name, int value)
         {
+            // Create unit
             AbstractUnit unit = unitFactory.CreateUnit(type, name, value);
+            // Check if unit is created, if true: add unit to list
             if (unit != null)
             {
                 this._units.Add(unit);
@@ -54,8 +66,10 @@ namespace DesignPatterns
             }
         }
 
+        // Method for retrieving a unit from the Faction by its index.
         public AbstractUnit getUnitById(int id)
         {
+            // Check if unit is in List
             if (id >= 0 && id < getUnitCount())
             {
                 return this._units[id];
