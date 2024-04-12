@@ -80,6 +80,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method to return total amount of unit in the Faction.
         public int getUnitCount()
         {
             return _units.Count;
