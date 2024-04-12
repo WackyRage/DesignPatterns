@@ -1,4 +1,5 @@
 ﻿using DesignPatterns.Classes.Faction;
+using MetalPerformanceShadersGraph;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -213,6 +214,17 @@ namespace DesignPatterns
             }
 
             throw new Exception("Army not found for the specified name.");
+        }
+
+        public void hasArmy(ArmyList army)
+        {
+            for(int i = 0; i < this._armies.Count; i++)
+            {
+                if (_armies[i].equals(army))
+                {
+                    _armies[i] = army;
+                }
+            }
         }
 
         public void update(int value, string armyName, string playerName)

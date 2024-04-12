@@ -14,20 +14,14 @@ namespace DesignPatterns
         private List<Subscriber> subscribers = new();
         private string _armyName;
         private string _playerName;
-        private List<AbstractUnit> _units;
-
-        public List<AbstractUnit> units
-        {
-            get => _units;
-            set => _units = value;
-        }
+        private List<AbstractUnit> units;
 
         // Constructor for ArmyList without pre-defined army.
         public ArmyList(string armyName, string playerName)
         {
             this._armyName = armyName;
             this._playerName = playerName;
-            this._units = new();
+            this.units = new();
         }
 
         // Constructor for ArmyList with pre-defined army.
@@ -35,7 +29,7 @@ namespace DesignPatterns
         {
             this._armyName = armyName;
             this._playerName = playerName;
-            this._units = units;
+            this.units = units;
         }
 
         // Method for getting and setting the armyName.
@@ -54,13 +48,13 @@ namespace DesignPatterns
 
         public void addUnit(AbstractUnit unit)
         {
-            _units.Add(unit);
+            units.Add(unit);
             this.notifySubscriber();
         }
 
         public void removeUnit(AbstractUnit unit)
         {
-            _units.Remove(unit);
+            units.Remove(unit);
             this.notifySubscriber();
         }
 
@@ -68,9 +62,9 @@ namespace DesignPatterns
         public AbstractUnit getUnitById(int id)
         {
             // Check if unit is in List
-            if (id >= 0 && id < _units.Count)
+            if (id >= 0 && id < units.Count)
             {
-                return _units[id];
+                return units[id];
             }
             else
             {
@@ -83,7 +77,7 @@ namespace DesignPatterns
         {
             int value = 0;
 
-            foreach (AbstractUnit unit in _units)
+            foreach (AbstractUnit unit in units)
             {
                 if (unit is AbstractUnit abstractUnit)
                 {
@@ -96,7 +90,7 @@ namespace DesignPatterns
         // Method to return total amount of unit in the army.
         public int getArmyCount()
         {
-            return _units.Count;
+            return units.Count;
         }
 
         public void subscribe(Subscriber S)
@@ -119,7 +113,7 @@ namespace DesignPatterns
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this._units);
+            string JU = JSONObject.ListToJSON(this.units);
 
             List<string> list = new() { this.armyName, this.playerName, JU };
 
@@ -140,7 +134,18 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this.armyName + ", " + this.playerName + ", " + this._units.Count;
+            return this.armyName + ", " + this.playerName + ", " + this.units.Count;
+        }
+
+        public bool equals(ArmyList other)
+        {
+            if (this._armyName == other.armyName) {
+                if(this._playerName == other.playerName)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

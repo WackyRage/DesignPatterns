@@ -117,6 +117,10 @@ namespace DesignPatterns
                 foreach (String item in jsonList)
                 {
                     ArmyList temp = ArmyList.FromJSON(item);
+                    foreach (Tournament t in this.Tournaments)
+                    {
+                        t.hasArmy(temp);
+                    }
                     Armies.Add(temp);
                 }
             }
