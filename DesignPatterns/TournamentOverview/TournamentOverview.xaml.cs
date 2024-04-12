@@ -20,6 +20,7 @@ namespace DesignPatterns.TournamentOverview
             primaryMissionPicker.ItemsSource = this.PrimaryMissions;
             secondaryMissionPicker.ItemsSource = this.SecondaryMissions; 
             mapPicker.ItemsSource = this.Maps;
+            collectionViewTournaments.ItemsSource = this.Tournaments;
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)

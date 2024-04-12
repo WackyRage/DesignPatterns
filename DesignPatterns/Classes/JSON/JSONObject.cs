@@ -98,8 +98,8 @@ namespace DesignPatterns
             string path = directory.FullName;
             */
 
-            string path = //@"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
-                          @"D:\Users\frank\source\repos\DesignPatterns";
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+                          //@"D:\Users\frank\source\repos\DesignPatterns";
             string jsonString = "";
             using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
             {

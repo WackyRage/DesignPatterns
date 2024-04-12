@@ -20,11 +20,11 @@
             </Picker.Items>
         </Picker>
         <Picker x:Name="primaryMissionPicker" Title="Select a Primary Mission" 
-                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
+                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
         <Picker x:Name="secondaryMissionPicker" Title="Select a Secondary Mission" 
-                Grid.Row="1" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
+                Grid.Row="1" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
         <Picker x:Name="mapPicker" Title="Select a Map" 
-                Grid.Row="2" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
+                Grid.Row="2" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
 
         <Button Text="Back"
                 Grid.Row="0"
@@ -39,24 +39,11 @@
                 BackgroundColor="OrangeRed"/>
 
         <CollectionView x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20">
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Tournament One</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding .}"
+                            <Label Text="{Binding name}"
                                    FontSize="24"/>
                         </Frame>
                     </Grid>
