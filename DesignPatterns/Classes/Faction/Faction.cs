@@ -9,27 +9,36 @@ namespace DesignPatterns
 {
     internal class Faction
     {
-        private string name;
-        private List<AbstractUnit> units;
+        private string _name;
+        private List<AbstractUnit> _units;
         private UnitFactory unitFactory;
-
+        public string name
+        {
+            get => _name; 
+            set => _name = value;
+        }
+        public List<AbstractUnit> units
+        {
+            get => _units;
+            set => _units = value;
+        }
         public Faction(string name)
         {
-            this.name = name;
+            this._name = name;
             this.unitFactory = new UnitFactory();
-            units = new();
+            _units = new();
         }
 
         public Faction(string name, List<AbstractUnit> units)
         {
-            this.name = name;
+            this._name = name;
             this.unitFactory = new UnitFactory();
-            this.units = units;
+            this._units = units;
         }
 
         public void addUnit(AbstractUnit unit)
         {
-            this.units.Add(unit);
+            this._units.Add(unit);
         }
 
         public void addUnit(string type, string name, int value)
@@ -37,7 +46,7 @@ namespace DesignPatterns
             AbstractUnit unit = unitFactory.CreateUnit(type, name, value);
             if (unit != null)
             {
-                this.units.Add(unit);
+                this._units.Add(unit);
             }
             else
             {
@@ -49,7 +58,7 @@ namespace DesignPatterns
         {
             if (id >= 0 && id < getUnitCount())
             {
-                return this.units[id];
+                return this._units[id];
             }
             else
             {
@@ -59,14 +68,14 @@ namespace DesignPatterns
 
         public int getUnitCount()
         {
-            return units.Count;
+            return _units.Count;
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.units);
+            string JU = JSONObject.ListToJSON(this._units);
 
-            List<string> list = new() { this.name, JU };
+            List<string> list = new() { this._name, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -84,7 +93,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this.name + ", " + this.units.Count;
+            return this._name + ", " + this._units.Count;
         }
     }
 }

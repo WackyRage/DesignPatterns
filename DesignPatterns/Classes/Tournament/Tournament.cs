@@ -11,60 +11,85 @@ namespace DesignPatterns
     internal class Tournament
     {
         private string _name;
-        private Map map;
-        private GameType gameType;
+        private Map _map;
+        private GameType _gameType;
         private int _armyLimit;
-        private List<Mission> missions;
-        private List<Log> logs;
-        private List<ArmyList> armies;
-        public int armyLimit
-        {
-            get => _armyLimit;
-            set => _armyLimit = value;
-        }
+        private List<Mission> _missions;
+        private List<Log> _logs;
+        private List<ArmyList> _armies;
         public string name
         {
             get => _name;
             set => _name = value;
         }
+        public Map map
+        {
+            get => _map;
+            set => _map = value;
+        }
+        public GameType gameType
+        {
+            get => _gameType;
+            set => _gameType = value;
+        }
+        public int armyLimit
+        {
+            get => _armyLimit;
+            set => _armyLimit = value;
+        }
+        public List<Mission> missions
+        {
+            get => _missions; 
+            set => _missions = value;
+        }
+        public List<Log> logs
+        {
+            get => _logs;
+            set => _logs = value;
+        }
+        public List<ArmyList> armies
+        {
+            get => _armies;
+            set => _armies = value;
+        }
 
         public Tournament(string name, Map map, GameType gameType, int armyLimit)
         {
             this._name = name;
-            this.map = map;
-            this.gameType = gameType;
+            this._map = map;
+            this._gameType = gameType;
             this._armyLimit = armyLimit;
-            this.missions = new();
-            this.logs = new();
-            this.armies = new();
+            this._missions = new();
+            this._logs = new();
+            this._armies = new();
         }
 
         public Tournament(string name, Map map, GameType gameType, int armyLimit, List<Mission> missions, List<Log> logs, List<ArmyList> armies)
         {
             this._name = name;
-            this.map = map;
-            this.gameType = gameType;
+            this._map = map;
+            this._gameType = gameType;
             this._armyLimit = armyLimit;
-            this.missions = missions;
-            this.logs = logs;
-            this.armies = armies;
+            this._missions = missions;
+            this._logs = logs;
+            this._armies = armies;
         }
 
         public void addMission(Mission m)
         {
-            this.missions.Add(m);
+            this._missions.Add(m);
         }
 
         public void addLog(Log l)
         {
-            this.logs.Add(l);
+            this._logs.Add(l);
         }
 
         public void addArmy(ArmyList a)
         {
             if (a.getArmyValue() <= this.armyLimit)
             {
-                this.armies.Add(a);
+                this._armies.Add(a);
             }
             else
             {
@@ -75,7 +100,7 @@ namespace DesignPatterns
         {
             try
             {
-                this.armies.Add(new ArmyList(armyName, playerName));
+                this._armies.Add(new ArmyList(armyName, playerName));
             }
             catch (Exception e)
             {
@@ -86,7 +111,7 @@ namespace DesignPatterns
 
         public void addUnitToArmy(string playerName, string armyName, AbstractUnit unit)
         {
-            foreach (var army in this.armies)
+            foreach (var army in this._armies)
             {
                 if (army.armyName == armyName && army.playerName == playerName)
                 {
@@ -108,22 +133,22 @@ namespace DesignPatterns
 
         public Mission getMissionById(int id)
         {
-            return this.missions[id];
+            return this._missions[id];
         }
 
         public Log getLogById(int id)
         {
-            return this.logs[id];
+            return this._logs[id];
         }
 
         public ArmyList getArmyById(int id)
         {
-            return this.armies[id];
+            return this._armies[id];
         }
 
         public ArmyList getArmyByPlayer(string player)
         {
-            foreach (var army in this.armies)
+            foreach (var army in this._armies)
             {
                 if (army.playerName == player)
                 {
@@ -136,7 +161,7 @@ namespace DesignPatterns
 
         public ArmyList getArmyByName(string name)
         {
-            foreach (var army in this.armies)
+            foreach (var army in this._armies)
             {
                 if (army.armyName == name)
                 {
@@ -150,21 +175,21 @@ namespace DesignPatterns
         public string ToJSON()
         {
             List<string> missions = new();
-            foreach (Mission mission in this.missions)
+            foreach (Mission mission in this._missions)
             {
                 missions.Add(mission.ToJSON());
             }
             List<string> logs = new();
-            foreach (Log log in this.logs)
+            foreach (Log log in this._logs)
             {
                 logs.Add(log.ToJSON());
             }
             List<string> armies = new();
-            foreach(ArmyList army in this.armies)
+            foreach(ArmyList army in this._armies)
             {
                 armies.Add(army.ToJSON());
             }
-            List<string> list = new() { this._name, this.map.ToJSON(), this.gameType.ToJSON(), this._armyLimit.ToString(), JSONObject.ListToJSON(missions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
+            List<string> list = new() { this._name, this._map.ToJSON(), this._gameType.ToJSON(), this._armyLimit.ToString(), JSONObject.ListToJSON(missions), JSONObject.ListToJSON(logs), JSONObject.ListToJSON(armies) };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
@@ -204,7 +229,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this._name + ", " + this.map.ToString() + ", " + this.gameType.ToString() + ", " + this._armyLimit + ", " + this.missions.Count + ", " + this.logs.Count + ", " + this.armies.Count;
+            return this._name + ", " + this._map.ToString() + ", " + this._gameType.ToString() + ", " + this._armyLimit + ", " + this._missions.Count + ", " + this._logs.Count + ", " + this._armies.Count;
         }
     }
 }

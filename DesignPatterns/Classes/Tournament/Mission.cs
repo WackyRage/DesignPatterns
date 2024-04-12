@@ -8,10 +8,25 @@ namespace DesignPatterns
 {
     internal class Mission
     {
-        private string name;
-        private string description;
-        private int value;
+        private string _name;
+        private string _description;
+        private int _value;
         private int _missionType;
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
+        public string description
+        {
+            get => _description;
+            set => _description = value;
+        }
+        public int value
+        {
+            get => _value;
+            set => _value = value;
+        }
         public int missionType
         {
             get => _missionType;
@@ -20,15 +35,15 @@ namespace DesignPatterns
 
         public Mission(string name, string description, int value, int missionType)
         {
-            this.name = name;
-            this.description = description;
-            this.value = value;
-            this.missionType = missionType;
+            this._name = name;
+            this._description = description;
+            this._value = value;
+            this._missionType = missionType;
         }
 
         public string ToJSON()
         {
-            List<string> list = new() { this.name, this.description, this.value.ToString(), this.missionType.ToString() };
+            List<string> list = new() { this._name, this._description, this._value.ToString(), this._missionType.ToString() };
             string jsonString = JSONObject.ListToJSON(list);
             return jsonString;
         }
