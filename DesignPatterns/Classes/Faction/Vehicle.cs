@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class representing Vehicle based on AbstractUnit and Unit
     internal class Vehicle : AbstractUnit, Unit
     {
+        // Constructor for initializing the name and value of the Vehicle unit.
         public Vehicle(string name, int value) : base(name, value) {}
 
         public string ToJSON()

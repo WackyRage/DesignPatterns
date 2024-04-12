@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Classes.Faction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,39 +7,90 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class for Faction, containing all unit concepts.
     internal class Faction
     {
-        private string name {  get; set; }
-        private List<Unit> units { get; set; }
-        private UnitFactory unitFactory = new UnitFactory();
+        private string _name;
+        private List<AbstractUnit> _units;
+        private UnitFactory unitFactory;
 
+        // Constructor for Faction without pre-defined army.
         public Faction(string name)
         {
-            this.name = name;
-            units = new();
+            this._name = name;
+            this.unitFactory = new UnitFactory();
+            _units = new();
         }
 
-        public Faction(string name, List<Unit> units)
+        // Constructor for Faction with pre-defined army.
+        public Faction(string name, List<AbstractUnit> units)
         {
-            this.name = name;
-            this.units = units;
+            this._name = name;
+            this.unitFactory = new UnitFactory();
+            this._units = units;
         }
 
-        public void addUnit(Unit unit)
+        // Method for getting and setting the faction name.
+        public string name
         {
-            this.units.Add(unit);
+            get => _name;
+            set => _name = value;
         }
 
-        public Unit getUnitById(int id)
+        // Method for getting and setting the units list.
+        public List<AbstractUnit> units
         {
-            return this.units[id];
+            get => _units;
+            set => _units = value;
+        }
+
+        // Method for adding pre-defined unit
+        public void addUnit(AbstractUnit unit)
+        {
+            this._units.Add(unit);
+        }
+
+        // Method to create unit based on unput
+        public void addUnit(string type, string name, int value)
+        {
+            // Create unit
+            AbstractUnit unit = unitFactory.CreateUnit(type, name, value);
+            // Check if unit is created, if true: add unit to list
+            if (unit != null)
+            {
+                this._units.Add(unit);
+            }
+            else
+            {
+                throw new ArgumentException($"Failed to add unit with type '{type}'.");
+            }
+        }
+
+        // Method for retrieving a unit from the Faction by its index.
+        public AbstractUnit getUnitById(int id)
+        {
+            // Check if unit is in List
+            if (id >= 0 && id < getUnitCount())
+            {
+                return this._units[id];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Invalid unit ID.");
+            }
+        }
+
+        // Method to return total amount of unit in the Faction.
+        public int getUnitCount()
+        {
+            return _units.Count;
         }
 
         public string ToJSON()
         {
-            string JU = JSONObject.ListToJSON(this.units);
+            string JU = JSONObject.ListToJSON(this._units);
 
-            List<string> list = new() { this.name, JU };
+            List<string> list = new() { this._name, JU };
 
             string returnString = JSONObject.ListToJSON(list);
             return returnString;
@@ -48,7 +100,7 @@ namespace DesignPatterns
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
             string name = list[0];
-            List<Unit> units = JSONObject.JSONToList<Unit>(list[1]);
+            List<AbstractUnit> units = JSONObject.JSONToList<AbstractUnit>(list[1]);
             Faction Faction = new(name, units);
 
             return Faction;
@@ -56,7 +108,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this.name + ", " + this.units.Count;
+            return this._name + ", " + this._units.Count;
         }
     }
 }

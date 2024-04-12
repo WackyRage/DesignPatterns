@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class representing Infantry based on AbstractUnit and Unit
     internal class Infantry : AbstractUnit, Unit
     {
+        // Constructor for initializing the name and value of the Infantry unit.
         public Infantry(string name, int value) : base(name, value) {}
 
         public string ToJSON()

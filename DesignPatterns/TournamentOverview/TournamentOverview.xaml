@@ -2,27 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DesignPatterns.TournamentOverview.TournamentOverview">
-    <Grid RowDefinitions="50, 50, 50, *"
+    <Grid RowDefinitions="75, 75, 75, 125, *"
           ColumnDefinitions=".25*, .50*, .25*"
           RowSpacing="10"
           ColumnSpacing="10"
           BackgroundColor="Grey">
-
-        <Entry Placeholder="Enter Tournament Name"
+        <Label Grid.Row="0" Grid.Column="0">Enter New Tournament Name</Label>
+        <Entry x:Name="namePicker" Placeholder="Enter Tournament Name"
                Grid.Row="0"
-               Grid.Column="0"/>
-        <Entry Placeholder="Enter Tournament Point Value"
-               Grid.Row="1"
-               Grid.Column="0"/>
-        <Entry Placeholder="Enter Tournament Primary Mission"
-               Grid.Row="0"
-               Grid.Column="1"/>
-        <Entry Placeholder="Enter Tournament Secundary Mission"
-               Grid.Row="1"
-               Grid.Column="1"/>
-        <Entry Placeholder="Enter Tournament Map"
-               Grid.Row="2"
-               Grid.Column="1"/>
+               Grid.Column="0"
+               Margin="0, 29, 0, 0"/>
+        <Picker x:Name="pointPicker" Title="Select a Point Value for your Tournament's Armies" 
+                Grid.Row="1" Grid.Column="0">
+            <Picker.Items>
+                <x:String>1000</x:String>
+                <x:String>2000</x:String>
+            </Picker.Items>
+        </Picker>
+        <Picker x:Name="primaryMissionPicker" Title="Select a Primary Mission" 
+                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
+        <Picker x:Name="secondaryMissionPicker" Title="Select a Secondary Mission" 
+                Grid.Row="1" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
+        <Picker x:Name="mapPicker" Title="Select a Map" 
+                Grid.Row="2" Grid.Column="1" ItemDisplayBinding="{Binding name}"/>
 
         <Button Text="Back"
                 Grid.Row="0"
@@ -36,32 +38,14 @@
                 Clicked="Button_Clicked_NewTournament"
                 BackgroundColor="OrangeRed"/>
 
-        <CollectionView x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20">
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Tournament One</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                    <x:String>Tournament Two</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="0, 5">
-                        <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding .}"
-                                   FontSize="24"/>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Picker x:Name="collectionViewTournaments" Grid.Row="3" Grid.Column="1" Margin="20" 
+                Title="Select a Tournament" ItemDisplayBinding="{Binding name}"/>
 
-        
+        <Button Text="Open Tournament Details"
+                Grid.Row="3"
+                Grid.Column="2"
+                Clicked="Button_Clicked_SelectedTournament"
+                BackgroundColor="MediumPurple"/>
+
     </Grid>
 </ContentPage>

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Class log, to record events.
     internal class Log
     {
-        private string message { get; set; }
-        private DateTime date {  get; set; }
-        private bool resolved {  get; set; }
+        private string message;
+        private DateTime date;
+        private bool resolved;
 
         public Log(string message, DateTime date, bool resolved)
         {
@@ -19,6 +20,7 @@ namespace DesignPatterns
             this.resolved = resolved;
         }
 
+        // chack booloan to opposite value
         public void changeResolved()
         {
             if (this.resolved)

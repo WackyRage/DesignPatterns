@@ -1,0 +1,50 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DesignPatterns.ArmyOverview.ArmyOverview">
+    <Grid RowDefinitions="75, 75, *"
+          ColumnDefinitions=".25* , .45*, .30*"
+          RowSpacing="10"
+          ColumnSpacing="10"
+          BackgroundColor="Grey">
+        <Picker x:Name="armyPicker" Title="Select an Army List" 
+            Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding armyName}"/>
+        <Button Text="Edit Selected Army"
+                Grid.Row="0"
+                Grid.Column="2"
+                Clicked="Button_Clicked_EditArmy"
+                BackgroundColor="OrangeRed"/>
+        
+        <Button Text="Back"
+                Grid.Row="0"
+                Grid.Column="0"
+                Clicked="Button_Clicked_Back"
+                BackgroundColor="DarkRed"/>
+
+        <Entry x:Name="armyNameEntry" Placeholder="Enter Army Creator Name"
+               Grid.Row="1"
+               Grid.Column="0"
+               Margin="0, 29, 0, 0"/>
+        <Entry x:Name="ownerNameEntry" Placeholder="Enter New Army Name"
+               Grid.Row="1"
+               Grid.Column="1"
+               Margin="0, 29, 0, 0"/>
+        <Button Text="Create New Army"
+                Grid.Row="1"
+                Grid.Column="2"
+                Clicked="Button_Clicked_New_Army"
+                BackgroundColor="Orange"/>
+
+        <CollectionView x:Name="collectionViewArmies" Grid.Row="2" Grid.Column="1" Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0, 5">
+                        <Frame BackgroundColor="LightGrey">
+                            <Label Text="{Binding armyName}"
+                                   FontSize="24"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

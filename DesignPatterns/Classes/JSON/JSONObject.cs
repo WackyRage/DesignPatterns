@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Diagnostics;
 
 namespace DesignPatterns
 {
     internal class JSONObject
     {
         static readonly JsonSerializerOptions O = new() { IncludeFields = true };
-        private string ObjectType { get; set; }
-        private object Object { get; set; }
+        public string ObjectType { get; set; }
+        public object Object { get; set; }
 
         [JsonConstructor]
         public JSONObject(object Object)
@@ -63,14 +64,24 @@ namespace DesignPatterns
 
         public static void WriteJSONToFile(List<string> jsonStrings, string FileName)
         {
+            /*
             var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
             while (directory != null && !directory.GetFiles("*.sln").Any())
             {
                 directory = directory.Parent;
             }
             string path = directory.FullName;
+            */
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns\SaveData";
+                          //@"D:\Users\frank\source\repos\DesignPatterns\SaveData";
+                          //@".\SaveData";
+            path = Path.Combine(path, FileName);
+            if(!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
             string jsonString = JSONObject.ListToJSON(jsonStrings);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(path, "SaveData", FileName)))
+            using (StreamWriter outputFile = new StreamWriter(path))
             {
                 outputFile.Write(jsonString);
             }
@@ -80,15 +91,19 @@ namespace DesignPatterns
         {
             /*
             var directory = new DirectoryInfo(null ?? Directory.GetCurrentDirectory());
+            Debug.WriteLine(directory.FullName);
             while (directory != null && !directory.GetFiles("*.sln").Any())
             {
                 directory = directory.Parent;
             }
+            string path = directory.FullName;
             */
 
-            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns\SaveData";
+                          //@"D:\Users\frank\source\repos\DesignPatterns\SaveData";
+                          //@".\SaveData";
             string jsonString = "";
-            using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
+            using (StreamReader sr = new StreamReader(Path.Combine(path, FileName)))
             {
                 jsonString = sr.ReadToEnd();
             }

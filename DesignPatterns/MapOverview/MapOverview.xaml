@@ -5,17 +5,20 @@
     <Grid RowDefinitions="50, 50, *"
           ColumnDefinitions=".50*, .25*"
           RowSpacing="10"
-          ColumnSpacing="10">
+          ColumnSpacing="10"
+          BackgroundColor="Gray">
         <Label Text="Create New Map Type:"
                Grid.Row="0"
                Grid.Column="0"
                FontSize="24"/>
-        <Entry Placeholder="Enter New Map"
+        <Entry x:Name="mapNameEntry"
+               Placeholder="Enter New Map"
                Grid.Row="1"
                Grid.Column="0"/>
         <Button Text="Create New Map"
                 Grid.Row="1"
-                Grid.Column="1"/>
+                Grid.Column="1"
+                Clicked="Button_Clicked_New_Map"/>
 
         <Button Text="Back"
                 Grid.Row="0"
@@ -23,12 +26,12 @@
                 Clicked="Button_Clicked_Back"
                 BackgroundColor="DarkRed"/>
 
-        <CollectionView x:Name="collectionViewMaps" Grid.Row="2" Grid.Column="0" Margin="20">
+        <CollectionView x:Name="collectionViewMap" Grid.Row="2" Grid.Column="0" Margin="20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding Name}"
+                            <Label Text="{Binding name}"
                                    FontSize="24"/>
                         </Frame>
                     </Grid>

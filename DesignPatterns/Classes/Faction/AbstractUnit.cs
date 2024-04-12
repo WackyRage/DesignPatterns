@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.Classes.Faction
 {
+    // Abstract class, containing basic information for all units
     internal abstract class AbstractUnit
     {
         protected string name;
@@ -17,24 +18,18 @@ namespace DesignPatterns.Classes.Faction
             this.value = value;
         }
 
-        public string getName() 
+        // Method for getting and setting the name of the unit.
+        public string Name
         {
-            return this.name;     
+            get { return name; }
+            set { name = value; }
         }
 
-        public int getValue()
+        // Method for getting and setting the value of the unit.
+        public int Value
         {
-            return this.value;
-        }
-        
-        public void setValue(int value)
-        {
-            this.value = value;
-        }
-
-        public void setName(string name)
-        { 
-            this.name = name; 
+            get { return value; }
+            set { this.value = value; }
         }
 
     }

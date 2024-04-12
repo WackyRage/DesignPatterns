@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
+    // Interface unit, providing necessary methods for JSON.
     internal interface Unit
     {
         string ToJSON();
