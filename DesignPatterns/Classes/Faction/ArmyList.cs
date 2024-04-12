@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 namespace DesignPatterns
 {
     // Class for army list, containing all army selected units.
-    internal class ArmyList
+    internal class ArmyList: Publisher
     {
+        private List<Subscriber> subscribers = new();
         private string _armyName;
         private string _playerName;
-        private List<AbstractUnit> units { get; set; }
+        private List<AbstractUnit> units;
 
         // Constructor for ArmyList without pre-defined army.
         public ArmyList(string armyName, string playerName)
@@ -48,6 +49,13 @@ namespace DesignPatterns
         public void addUnit(AbstractUnit unit)
         {
             units.Add(unit);
+            this.notifySubscriber();
+        }
+
+        public void removeUnit(AbstractUnit unit)
+        {
+            units.Remove(unit);
+            this.notifySubscriber();
         }
 
         // Method for retrieving a unit from the army by its index.
@@ -83,6 +91,24 @@ namespace DesignPatterns
         public int getArmyCount()
         {
             return units.Count;
+        }
+
+        public void subscribe(Subscriber S)
+        {
+            this.subscribers.Add(S);
+        }
+
+        public void unsubscribe(Subscriber S)
+        {
+            this.subscribers.Remove(S);
+        }
+
+        public void notifySubscriber()
+        {
+            foreach (Subscriber s in this.subscribers)
+            {
+                s.update(this.getArmyValue(), this._armyName, this._playerName);
+            }
         }
 
         public string ToJSON()
