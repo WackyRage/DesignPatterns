@@ -14,6 +14,7 @@ namespace DesignPatterns
         ArrayList Maps = new ArrayList();
         ArrayList PrimaryMissions = new ArrayList();
         ArrayList SecondaryMissions = new ArrayList();
+        ArrayList Missions = new ArrayList();
 
         public MainPage()
         {
@@ -37,12 +38,12 @@ namespace DesignPatterns
 
         public void Button_Clicked_Main(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview(PrimaryMissions));
+            Navigation.PushAsync(new MainMissionOverview.MainMissionOverview(PrimaryMissions, Missions));
         }
 
         public void Button_Clicked_Secundary(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview(SecondaryMissions));
+            Navigation.PushAsync(new SecundaryMissionOverview.SecundaryMissionOverview(SecondaryMissions, Missions));
         }
 
         public void refreshJsons() 
@@ -98,6 +99,7 @@ namespace DesignPatterns
                     {
                         SecondaryMissions.Add(temp);
                     }
+                    Missions.Add(temp);
                 }
             }
         }

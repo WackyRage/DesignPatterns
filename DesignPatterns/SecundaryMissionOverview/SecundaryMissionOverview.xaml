@@ -2,29 +2,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DesignPatterns.SecundaryMissionOverview.SecundaryMissionOverview">
-    <Grid RowDefinitions="50, 50, *"
+    <Grid RowDefinitions="50, 50, 50, 50, *"
           ColumnDefinitions=".50*, .25*"
           RowSpacing="10"
           ColumnSpacing="10"
           BackgroundColor="Grey">
-        <Label Text="Create New Secundary Mission Type:"
+        <Label Text="Create New Secondary Mission Type:"
                Grid.Row="0"
                Grid.Column="0"
                FontSize="24"/>
-        <Entry Placeholder="Enter New Secundary Mission"
+        <Entry x:Name="secondaryMissionNameEntry" 
+               Placeholder="Enter New Secondary Mission"
                Grid.Row="1"
                Grid.Column="0"/>
-        <Button Text="Create New Secundary Mission"
-               Grid.Row="1"
-               Grid.Column="1"/>
+        <Entry x:Name="secondaryMissionDescriptionEntry"
+                Placeholder="Enter description for new mission"
+                Grid.Row="2"
+                Grid.Column="0"/>
+        <Entry x:Name="secondaryMissionPointsEntry"
+                Placeholder="Enter point value for new mission"
+                Grid.Row="3"
+                Grid.Column="0"/>
+        <Button Text="Create New Secondary Mission"
+                Grid.Row="3"
+                Grid.Column="1"
+                Clicked="Button_Clicked_New_Secondary"/>
 
         <Button Text="Back"
-                Grid.Row="0"
+                Grid.Row="2"
                 Grid.Column="1"
                 Clicked="Button_Clicked_Back"
                 BackgroundColor="DarkRed"/>
 
-        <CollectionView x:Name="collectionViewSecondaryMissions" Grid.Row="2" Grid.Column="0" Margin="20">
+        <CollectionView x:Name="collectionViewSecondaryMissions" Grid.Row="4" Grid.Column="0" Margin="20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0, 5">
