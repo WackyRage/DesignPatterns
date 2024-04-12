@@ -20,6 +20,10 @@
                 BackgroundColor="Orange"
                 Clicked="EditArmyNameOnClick"/>
 
+        <Label x:Name="armyNameLabel"
+               Grid.Row="1"
+               Grid.Column="0"/>
+
         <Entry x:Name="armyNameEdit"
                Placeholder="Enter New Army Name"
                Grid.Row="1"
@@ -31,6 +35,10 @@
                 BackgroundColor="Orange"
                 Clicked="editArmyOwnerOnClick"/>
 
+        <Label x:Name="armyOwnerLabel"
+               Grid.Row="2"
+               Grid.Column="0"/>
+        
         <Entry x:Name="armyOwnerEdit"
                Placeholder="Enter New Army Owner Name"
                Grid.Row="2"

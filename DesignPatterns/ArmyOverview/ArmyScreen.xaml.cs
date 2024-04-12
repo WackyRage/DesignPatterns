@@ -28,7 +28,10 @@ namespace DesignPatterns.ArmyOverview
             { 
                 unitsInArmy.Add(unit);
             }*/
-            
+
+            armyNameLabel.Text = "Army name: " + army.armyName;
+            armyOwnerLabel.Text = "Player name: " + army.playerName;
+
             unitPicker.ItemsSource = Units;
             collectionViewLogs.ItemsSource = unitsInArmy;
         }
@@ -43,6 +46,7 @@ namespace DesignPatterns.ArmyOverview
             if (armyNameEdit.Text != null) 
             { 
                 army.armyName = armyNameEdit.Text;
+                Navigation.PushAsync(new ArmyScreen(Armies, index, Units));
             }
         } 
 
@@ -51,6 +55,7 @@ namespace DesignPatterns.ArmyOverview
             if (armyOwnerEdit.Text != null)
             {
                 army.playerName = armyOwnerEdit.Text;
+                Navigation.PushAsync(new ArmyScreen(Armies, index, Units));
             }
         }
 
