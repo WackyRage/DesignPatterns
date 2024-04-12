@@ -8,35 +8,45 @@ namespace DesignPatterns
 {
     internal class Map
     {
-        private string name;
-        private List<TerrainCoordinates> terrains;
+        private string _name;
+        private List<TerrainCoordinates> _terrains;
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
+        public List<TerrainCoordinates> terrains
+        {
+            get => _terrains;
+            set => _terrains = value;
+        }
 
         public Map(string name)
         {
-            this.name = name;
-            this.terrains = new();
+            this._name = name;
+            this._terrains = new();
         }
 
         public Map(string name, List<TerrainCoordinates> terrains)
         {
-            this.name = name;
-            this.terrains = terrains;
+            this._name = name;
+            this._terrains = terrains;
         }
 
         public void addTerrain(Terrain t, int x, int y)
         {
-            terrains.Add(new TerrainCoordinates(t, x, y));
+            _terrains.Add(new TerrainCoordinates(t, x, y));
         }
 
         public TerrainCoordinates getTerrainById(int id) 
         {
-            return terrains[id];
+            return _terrains[id];
         }
 
         public string ToJSON()
         {
-            List<string> list = new() { this.name };
-            foreach (TerrainCoordinates terrain in terrains)
+            List<string> list = new() { this._name };
+            foreach (TerrainCoordinates terrain in _terrains)
             {
                 list.Add(terrain.ToJSON());
             }
@@ -59,7 +69,7 @@ namespace DesignPatterns
 
         public override string ToString()
         {
-            return this.name + ", " + this.terrains.Count;
+            return this._name + ", " + this._terrains.Count;
         }
     }
 }
