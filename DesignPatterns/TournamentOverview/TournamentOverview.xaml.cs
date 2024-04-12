@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 
 namespace DesignPatterns.TournamentOverview
 {
@@ -8,9 +9,11 @@ namespace DesignPatterns.TournamentOverview
         ArrayList Maps = new ArrayList();
         ArrayList PrimaryMissions = new ArrayList();
         ArrayList SecondaryMissions = new ArrayList();
+        ArrayList Armies = new ArrayList();
 
-        public TournamentOverview(ArrayList Tournaments, ArrayList Maps, ArrayList PrimaryMissions, ArrayList SecondaryMissions)
+        public TournamentOverview(ArrayList Tournaments, ArrayList Maps, ArrayList PrimaryMissions, ArrayList SecondaryMissions, ArrayList Armies)
         {
+            this.Armies = Armies;
             this.Tournaments = Tournaments;
             this.Maps = Maps;   
             this.PrimaryMissions = PrimaryMissions;
@@ -21,6 +24,15 @@ namespace DesignPatterns.TournamentOverview
             secondaryMissionPicker.ItemsSource = this.SecondaryMissions; 
             mapPicker.ItemsSource = this.Maps;
             collectionViewTournaments.ItemsSource = this.Tournaments;
+        }
+
+        public void Button_Clicked_SelectedTournament(object sender, EventArgs e)
+        {
+            if (collectionViewTournaments.SelectedIndex != -1) 
+            {
+                Navigation.PushAsync(new TournamentScreen.TournamentScreen(Tournaments, 
+                    collectionViewTournaments.SelectedIndex, Armies, Maps, PrimaryMissions, SecondaryMissions));
+            }
         }
 
         public void Button_Clicked_Back(object sender, EventArgs e)
@@ -64,8 +76,7 @@ namespace DesignPatterns.TournamentOverview
 
                 TournamentsSave();
             }
-            //Navigation.PushAsync(new TournamentScreen.TournamentScreen());
-            Navigation.PushAsync(new TournamentOverview(Tournaments, Maps, PrimaryMissions, SecondaryMissions));
+            Navigation.PushAsync(new TournamentOverview(Tournaments, Maps, PrimaryMissions, SecondaryMissions, Armies));
         }
 
         public void TournamentsSave()
