@@ -49,6 +49,7 @@ namespace DesignPatterns
             return rules[id];
         }
 
+        // Method to convert Terrain to JSONString
         public string ToJSON()
         {
             string rules = JSONObject.ListToJSON(this.rules);
@@ -57,6 +58,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to covert JSONString back to a Terrain
         public static Terrain FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

@@ -86,6 +86,7 @@ namespace DesignPatterns
             return _units.Count;
         }
 
+        // Method to convert Faction to JSONString
         public string ToJSON()
         {
             string JU = JSONObject.ListToJSON(this._units);
@@ -96,6 +97,8 @@ namespace DesignPatterns
             return returnString;
         }
 
+
+        // Method to covert JSONString back to a Faction
         public static Faction FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

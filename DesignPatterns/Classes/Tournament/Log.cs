@@ -33,6 +33,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method to convert Log to JSONString
         public string ToJSON()
         {
             string date = JSONObject.ObjectToJSON(this.date);
@@ -43,6 +44,7 @@ namespace DesignPatterns
             return jsonString; 
         }
 
+        // Method to covert JSONString back to a Log
         public static Log FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

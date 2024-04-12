@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace DesignPatterns
 {
+    // Class to act as the default object to save in the Json string
     internal class JSONObject
     {
         static readonly JsonSerializerOptions O = new() { IncludeFields = true };
@@ -22,6 +23,7 @@ namespace DesignPatterns
             this.Object = Object;
         }
 
+        // Method to convert any object to a JSONString
         public static string ObjectToJSON(object obj)
         {
             JSONObject JO = new(obj);
@@ -29,6 +31,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to convert any list to a JSONString
         public static string ListToJSON<T>(List<T> list)
         {
             List<JSONObject> LJO = new();
@@ -40,6 +43,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to convert a JSONString back into a generic Object
         public static object JSONToObject(string jsonString)
         {
             JSONObject JO = (JSONObject)JsonSerializer.Deserialize(jsonString, typeof(JSONObject));
@@ -49,6 +53,7 @@ namespace DesignPatterns
             return obj;
         }
 
+        // Method to convert a JSONString into a List of the Type T
         public static List<T> JSONToList<T>(string jsonString)
         {
             List<JSONObject> LJO = (List<JSONObject>)JsonSerializer.Deserialize(jsonString, typeof(List<JSONObject>));
@@ -62,6 +67,7 @@ namespace DesignPatterns
             return returnList;
         }
 
+        // Method to save a List of JSONStrings to a File
         public static void WriteJSONToFile(List<string> jsonStrings, string FileName)
         {
             /*
@@ -87,6 +93,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method to read a JSONFile
         public static List<string> ReadJSONFile(string FileName)
         {
             /*

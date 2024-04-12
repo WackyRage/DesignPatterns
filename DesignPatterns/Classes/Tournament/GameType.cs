@@ -48,6 +48,7 @@ namespace DesignPatterns
             return this.factions[id];
         }
 
+        // Method to convert GameType to JSONString
         public string ToJSON() 
         {
             List<string> list = new() { this.name };
@@ -59,6 +60,7 @@ namespace DesignPatterns
             return returnString;
         }
 
+        // Method to covert JSONString back to a GameType
         public static GameType FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

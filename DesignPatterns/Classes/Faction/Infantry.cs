@@ -13,11 +13,13 @@ namespace DesignPatterns
         // Constructor for initializing the name and value of the Infantry unit.
         public Infantry(string name, int value) : base(name, value) {}
 
+        // Method to convert Infanty to JSONString
         public string ToJSON()
         {
             return JSONObject.ObjectToJSON(this);
         }
 
+        // Method to covert JSONString back to a Infantry
         public override string ToString()
         {
             return "(" + this.name + "," + this.value.ToString() + ")";

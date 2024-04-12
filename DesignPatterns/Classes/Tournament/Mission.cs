@@ -50,6 +50,7 @@ namespace DesignPatterns
             private set => _missionType = value;
         }
 
+        // Method to convert Mission to JSONString
         public string ToJSON()
         {
             List<string> list = new() { this._name, this._description, this._value.ToString(), this._missionType.ToString() };
@@ -57,6 +58,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to covert JSONString back to a Mission
         public static Mission FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

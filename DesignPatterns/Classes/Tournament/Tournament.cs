@@ -216,6 +216,7 @@ namespace DesignPatterns
             throw new Exception("Army not found for the specified name.");
         }
 
+        // Method that checks if an army in this tournament is equal to the army given and if so makes its Memory Pointers the same.
         public void hasArmy(ArmyList army)
         {
             for(int i = 0; i < this._armies.Count; i++)
@@ -227,6 +228,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method that gets executed when notified by a Publisher
         public void update(int value, string armyName, string playerName)
         {
             if(value > this._armyLimit)
@@ -237,6 +239,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method to convert Tournament to JSONString
         public string ToJSON()
         {
             List<string> missions = new();
@@ -259,6 +262,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to covert JSONString back to a Tournament
         public static Tournament FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

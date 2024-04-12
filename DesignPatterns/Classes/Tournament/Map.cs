@@ -63,6 +63,7 @@ namespace DesignPatterns
             return _terrains[id];
         }
 
+        // Method to convert Map to JSONString
         public string ToJSON()
         {
             List<string> list = new() { this._name };
@@ -74,6 +75,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to covert JSONString back to a Map
         public static Map FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

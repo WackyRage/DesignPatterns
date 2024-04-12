@@ -35,6 +35,7 @@ namespace DesignPatterns
             return new List<int> { xCoordinate, yCoordinate };
         }
 
+        // Method to convert TeraainCoodinates to JSONString
         public string ToJSON()
         {
             string terrain = this.terrain.ToJSON();
@@ -43,6 +44,7 @@ namespace DesignPatterns
             return jsonString;
         }
 
+        // Method to covert JSONString back to a TerrainCoordinates
         public static TerrainCoordinates FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);

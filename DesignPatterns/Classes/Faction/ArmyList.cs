@@ -46,12 +46,14 @@ namespace DesignPatterns
             set { _playerName = value; }
         }
 
+        // Method to add new Unit to Army
         public void addUnit(AbstractUnit unit)
         {
             units.Add(unit);
             this.notifySubscriber();
         }
 
+        // Method to remove Unit from Army
         public void removeUnit(AbstractUnit unit)
         {
             units.Remove(unit);
@@ -93,16 +95,19 @@ namespace DesignPatterns
             return units.Count;
         }
 
+        // Method to subscribe to this army
         public void subscribe(Subscriber S)
         {
             this.subscribers.Add(S);
         }
 
+        // Method to unsubscribe from this army
         public void unsubscribe(Subscriber S)
         {
             this.subscribers.Remove(S);
         }
 
+        // Method to let all subcribers know of the changes
         public void notifySubscriber()
         {
             foreach (Subscriber s in this.subscribers)
@@ -111,6 +116,7 @@ namespace DesignPatterns
             }
         }
 
+        // Method to convert ArmyList to JSONString
         public string ToJSON()
         {
             string JU = JSONObject.ListToJSON(this.units);
@@ -121,6 +127,7 @@ namespace DesignPatterns
             return returnString;
         }
 
+        // Method to covert JSONString back to an ArmyList
         public static ArmyList FromJSON(string jsonString)
         {
             List<string> list = JSONObject.JSONToList<string>(jsonString);
