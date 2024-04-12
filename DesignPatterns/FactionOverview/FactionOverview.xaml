@@ -11,12 +11,14 @@
                Grid.Row="0"
                Grid.Column="0"
                FontSize="24"/>
-        <Entry Placeholder="Enter New Faction Name"
+        <Entry x:Name="factionNameEntry"
+               Placeholder="Enter New Faction Name"
                Grid.Row="1"
                Grid.Column="0"/>
         <Button Text="Create New Faction"
                 Grid.Row="1"
-                Grid.Column="1"/>
+                Grid.Column="1"
+                Clicked="Button_Clicked_Create_Faction"/>
 
         <Button Text="Back"
                 Grid.Row="0"
