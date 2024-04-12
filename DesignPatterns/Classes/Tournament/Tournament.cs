@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DesignPatterns
 {
     // Class Tournament, contains all information of a tournament, including collections
-    internal class Tournament
+    internal class Tournament: Subscriber
     {
         private string _name;
         private Map _map;
@@ -41,6 +41,10 @@ namespace DesignPatterns
             this._missions = missions;
             this._logs = logs;
             this._armies = armies;
+            foreach(ArmyList army in this._armies)
+            {
+                army.subscribe(this);
+            }
         }
 
         // Method for getting and setting the name of the Tournament.
@@ -111,6 +115,7 @@ namespace DesignPatterns
             if (a.getArmyValue() <= this.armyLimit)
             {
                 this._armies.Add(a);
+                a.subscribe(this);
             }
             else
             {
@@ -124,7 +129,9 @@ namespace DesignPatterns
             try
             {
                 // Create new army object and add to armies list.
-                this._armies.Add(new ArmyList(armyName, playerName));
+                ArmyList army = new ArmyList(armyName, playerName)
+                this._armies.Add(army);
+                army.subscribe(this);
             }
             catch (Exception e)
             {
@@ -206,6 +213,16 @@ namespace DesignPatterns
             }
 
             throw new Exception("Army not found for the specified name.");
+        }
+
+        public void update(int value, string armyName, string playerName)
+        {
+            if(value > this._armyLimit)
+            {
+                string message = "Army: " + armyName + " of player: " + playerName + " has exceded the limit size for armies in tournament: " + this._name + ".";
+                Log L = new(message, DateTime.Now, false);
+                this._logs.Add(L);
+            }
         }
 
         public string ToJSON()

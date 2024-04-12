@@ -8,8 +8,8 @@ namespace DesignPatterns
 {
     internal interface Publisher
     {
-        protected void Subscribe();
-        protected void Unsubscribe();
-        protected void NotifySubscriber();
+        protected void subscribe(Subscriber S);
+        protected void unsubscribe(Subscriber S);
+        protected void notifySubscriber();
     }
 }

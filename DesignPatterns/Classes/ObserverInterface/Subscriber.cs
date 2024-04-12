@@ -8,6 +8,6 @@ namespace DesignPatterns
 {
     internal interface Subscriber
     {
-        protected void Update();
+        public void update(int value, string armyName, string playerName);
     }
 }
