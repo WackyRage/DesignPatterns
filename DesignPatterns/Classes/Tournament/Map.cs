@@ -71,5 +71,10 @@ namespace DesignPatterns
         {
             return this._name + ", " + this._terrains.Count;
         }
+
+        public static implicit operator Map(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

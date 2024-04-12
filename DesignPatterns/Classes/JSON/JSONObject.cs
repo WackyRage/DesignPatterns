@@ -72,8 +72,8 @@ namespace DesignPatterns
             }
             string path = directory.FullName;
             */
-            string path = //@"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
-                          @"D:\Users\frank\source\repos\DesignPatterns";
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
+                          //@"D:\Users\frank\source\repos\DesignPatterns";
             path = Path.Combine(path, "SaveData", FileName);
             if(!File.Exists(path))
             {
