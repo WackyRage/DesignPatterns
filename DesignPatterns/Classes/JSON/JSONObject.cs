@@ -72,9 +72,10 @@ namespace DesignPatterns
             }
             string path = directory.FullName;
             */
-            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
-                          //@"D:\Users\frank\source\repos\DesignPatterns";
-            path = Path.Combine(path, "SaveData", FileName);
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns\SaveData";
+                          //@"D:\Users\frank\source\repos\DesignPatterns\SaveData";
+                          //@".\SaveData";
+            path = Path.Combine(path, FileName);
             if(!File.Exists(path))
             {
                 File.Create(path).Close();
@@ -98,10 +99,11 @@ namespace DesignPatterns
             string path = directory.FullName;
             */
 
-            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns";
-                          //@"D:\Users\frank\source\repos\DesignPatterns";
+            string path = @"E:\Github Desktop\Repositories\Design Patterns\DesignPatterns\SaveData";
+                          //@"D:\Users\frank\source\repos\DesignPatterns\SaveData";
+                          //@".\SaveData";
             string jsonString = "";
-            using (StreamReader sr = new StreamReader(Path.Combine(path, "SaveData", FileName)))
+            using (StreamReader sr = new StreamReader(Path.Combine(path, FileName)))
             {
                 jsonString = sr.ReadToEnd();
             }
