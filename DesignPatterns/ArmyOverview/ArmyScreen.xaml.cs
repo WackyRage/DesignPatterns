@@ -23,11 +23,11 @@ namespace DesignPatterns.ArmyOverview
             this.Units = Units;
             InitializeComponent();
 
-            /*List<AbstractUnit> units = army.units;
+            List<AbstractUnit> units = army.units;
             foreach (AbstractUnit unit in units) 
             { 
                 unitsInArmy.Add(unit);
-            }*/
+            }
 
             armyNameLabel.Text = "Army name: " + army.armyName;
             armyOwnerLabel.Text = "Player name: " + army.playerName;
@@ -46,7 +46,7 @@ namespace DesignPatterns.ArmyOverview
             if (armyNameEdit.Text != null) 
             { 
                 army.armyName = armyNameEdit.Text;
-                Navigation.PushAsync(new ArmyScreen(Armies, index, Units));
+                armyNameLabel.Text = "Army name: " + army.armyName;
             }
         } 
 
@@ -55,7 +55,7 @@ namespace DesignPatterns.ArmyOverview
             if (armyOwnerEdit.Text != null)
             {
                 army.playerName = armyOwnerEdit.Text;
-                Navigation.PushAsync(new ArmyScreen(Armies, index, Units));
+                armyOwnerLabel.Text = "Player name: " + army.playerName;
             }
         }
 

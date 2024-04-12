@@ -7,7 +7,7 @@
           ColumnSpacing="10"
           BackgroundColor="Grey">
         <Picker x:Name="unitPicker" Title="Select a Unit to add to your army" 
-                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding armyName}"/>
+                Grid.Row="0" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
         <Button Text="Add New Army to Tournament"
                 Grid.Row="0"
                 Grid.Column="3"
@@ -55,7 +55,7 @@
                 <DataTemplate>
                     <Grid Padding="0, 5">
                         <Frame BackgroundColor="LightGrey">
-                            <Label Text="{Binding name}"
+                            <Label Text="{Binding Name}"
                                    FontSize="24"/>
                         </Frame>
                     </Grid>
